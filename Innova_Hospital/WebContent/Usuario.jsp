@@ -4,6 +4,8 @@
 <%@ taglib prefix="mt" tagdir="/WEB-INF/tags" %>
 <mt:plantilla tittle="Usuario">
 	<jsp:attribute name="content">
+	
+	
 <div class="invoice-wrapper rounded border bg-white py-5 px-3 px-md-4 px-lg-5">
 	<div class="card card-default">
 		<div class="card-header card-header-border-bottom">
@@ -56,6 +58,8 @@
 		</div>
 	</div>
 </div>
+
+
 	</jsp:attribute>
 
 </mt:plantilla>
