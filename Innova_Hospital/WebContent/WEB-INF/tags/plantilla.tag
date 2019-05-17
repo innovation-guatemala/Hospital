@@ -312,14 +312,36 @@
             </nav>
     	 </header>
     	 
-    	 <!-- CONTENIDO -->
+     	 <!-- CONTENIDO -->
     	 
     	 <jsp:invoke fragment="content"></jsp:invoke>
     	 
+    	 	<footer class="footer mt-auto">
+			<div class="columna1">
+				<h4>Contactos</h4>
+				<i class="mdi mdi-email"><a href="mailto:innovationguatemala502@gmail.com">Correo</a></i>
+				<p>+50235202402</p>
+			</div>
+			<div class="columna2">
+				<h4>Frase</h4>
+				<p>El buen médico trata la enfermedad; el gran médico </p>
+				<p>trata al paciente que tiene la enfermedad</p>
+			</div>
+			<div class="columna3">
+				<h4>Redes sociales</h4>
+				<i class="mdi mdi-facebook-box"><a href="https://www.facebook.com/profile.php?id=100015131490682" target="_blank">Facebook</a> </i>
+			</div>
+			<div class="columna4">
+				<h4>Derechos</h4>
+				<p>Innovation Guatemala Desarrollos</p>
+				<a class="text-primary" href="http://www.iamabdus.com/"
+					target="_blank">ERP Hospitales 2019</a>.
+			</div>
+		</footer>
     </div>
-    	
- 
- </div>
+	
+
+	</div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM"></script>
 <script src="Resources/assets/plugins/jquery/jquery.min.js"></script>
 <script src="Resources/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

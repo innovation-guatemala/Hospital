@@ -51,9 +51,28 @@ html {
 @-ms-viewport {
   width: device-width; }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+article, aside, figcaption, figure, header, hgroup, main, nav, section {
   display: block; }
 
+/*footer*/
+div[class*="columna"]{
+  display: flex;
+  flex-direction: column;
+  padding-left: 8%;
+  color: black;
+  
+}
+
+div[class="columna2"]{
+	font-size-adjust: 0.4;
+}
+footer{
+   background-color: #ffffff !important;
+  display: flex;
+  flex-direction: row;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+}
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -8123,22 +8142,6 @@ code {
   padding: 0.9375rem;
   color: #444444;
   border-top: 1px solid #e5e9f2; }
-
-.copyright {
-  padding-left: 1.25rem;
-  padding-top: 1.9rem;
-  padding-bottom: 1.9rem; }
-  @media (min-width: 992px) {
-    .copyright {
-      padding-left: 2.69rem; } }
-  @media (min-width: 1200px) {
-    .copyright {
-      padding-left: 3.44rem; } }
-  @media (min-width: 1500px) {
-    .copyright {
-      padding-left: 6.25rem; } }
-  .copyright p {
-    font-weight: 500; }
 
 /* Body */
 #body {
