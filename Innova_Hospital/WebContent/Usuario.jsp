@@ -9,7 +9,7 @@
 <div class="invoice-wrapper rounded border bg-white py-5 px-3 px-md-4 px-lg-5">
 	<div class="card card-default">
 		<div class="card-header card-header-border-bottom">
-			<h2>Basic Form</h2>
+			<h2>Basic - Form</h2>
 		</div>
 		<div class="card-body">
 		<form>
