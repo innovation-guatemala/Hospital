@@ -181,6 +181,11 @@ public class UsuarioDAO implements ServicioUsuario {
 		}
 		
 	}
+	
+	@Override
+	public Usuario Validar(String usuario, String pass) {
+		
+	}
 
 	public String GetMensaje() {
 		return mensaje;
