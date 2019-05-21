@@ -121,6 +121,19 @@ public class ServletUsuario extends HttpServlet {
 			direccion ="Usuario?accion=QRY";
 			break;
 			
+		case "VLD":
+			String user = request.getParameter("nombre");
+			String pass = request.getParameter("password");
+			int validacion = servicio.Validar(user, pass);
+			if (validacion != 0) {
+				direccion = "index.jsp";
+		
+			} else {
+                mensaje = "Credenciales incorrectas.";
+                direccion = "login.jsp";
+            }
+			break;
+			
 		default:
 			mensaje = "No se reconoce la accion";
 		

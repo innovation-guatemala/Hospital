@@ -183,8 +183,43 @@ public class UsuarioDAO implements ServicioUsuario {
 	}
 	
 	@Override
-	public Usuario Validar(String usuario, String pass) {
-		
+	public int Validar(String usuario, String pass) {
+		int retorno = 0;
+		Usuario validar = null;
+		String sentencia = "select nombre, password from login where nombre = ? and password = ?;";
+		Connection cn = db.Conectar();
+		if (cn != null ) {
+			try {
+				PreparedStatement st = cn.prepareStatement(sentencia);
+				st.setString(1, usuario);
+				st.setString(2, pass);
+				ResultSet rs = st.executeQuery();
+				if(rs.absolute(1)) {
+					retorno = 1;
+					while (rs.next()) {
+						validar = new Usuario();
+						validar.setNombre(rs.getString(1));
+						validar.setPassword(rs.getString(2));
+					}
+				}
+				else {
+					retorno = 0;
+					SetMensaje("Usuario o Password es incorrecto");
+				}
+				st.close();
+			} catch (SQLException e) {
+				SetMensaje("Problema con Consultar: " + e.getMessage());
+			} finally {
+				try {
+					cn.close();
+				}catch (SQLException ex) {
+					 SetMensaje(ex.getMessage());
+				}
+			}
+		} else {
+			SetMensaje("Error de conexion: " + db.GetMessage());
+		}
+		return retorno;
 	}
 
 	public String GetMensaje() {

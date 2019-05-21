@@ -61,15 +61,19 @@
               </div>
             </div>
             <div class="card-body p-5">
-
+			<%-- para mensajes  --%>
+              <div>${mensaje}</div>
               <h4 class="text-dark mb-5">Datos de Ingreso: </h4>
-              <form action="index.jsp">
+              <form action="Usuario" method="POST" class="form-horizontal">
+				<input type="hidden" name="accion" value="VLD"/>
                 <div class="row">
                   <div class="form-group col-md-12 mb-4">
-                    <input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp" placeholder="Nombre Usuario">
+                    <input type="text" class="form-control input-lg" id="usuario" placeholder="Nombre Usuario"
+                    name="nombre" value="">
                   </div>
                   <div class="form-group col-md-12 ">
-                    <input type="password" class="form-control input-lg" id="password" placeholder="Contraseña">
+                    <input type="password" class="form-control input-lg" id="password" placeholder="Contraseña"
+                    name="password" value="">
                   </div>
                   <div class="col-md-12">
                     <div class="d-flex my-2 justify-content-between">
