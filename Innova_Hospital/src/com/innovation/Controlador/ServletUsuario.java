@@ -15,7 +15,7 @@ import com.innovation.daoModelo.UsuarioDAO;
 import com.innovation.modelo.Usuario;
 
 
-@WebServlet("/Departamento")
+@WebServlet("/Usuario")
 public class ServletUsuario extends HttpServlet {
 
 	/**
@@ -42,7 +42,7 @@ public class ServletUsuario extends HttpServlet {
 			} else {
 				mensaje = servicio.GetMensaje();
 			}
-			direccion = "DepartamentoLista.jsp";
+			direccion = "Usuario.jsp";
 			break;
 			
 		case "INS":
@@ -57,12 +57,14 @@ public class ServletUsuario extends HttpServlet {
 			usuario.setPassword(password);
 			servicio.Insertar(usuario);
 			mensaje = servicio.GetMensaje();
+			System.out.println("Llego aqui 1");
 			if (mensaje != null) {
 				request.setAttribute("nombre",nombre);
 				request.setAttribute("apellido",apellido);
 				request.setAttribute("puesto",puesto);
 				request.setAttribute("password",password);
 				direccion ="Usuario?accion=QRY";
+				System.out.println("Llego aqui 2");
 			} else {
 				direccion ="Usuario?accion=QRY";
 			}
@@ -70,7 +72,7 @@ public class ServletUsuario extends HttpServlet {
 			
 		case "FND":
 			usuario = null;
-			int id_depto = Integer.parseInt(request.getParameter("id"));
+			int id_depto = Integer.parseInt(request.getParameter("id_acceso"));
 			if (id_depto != 0) {
 				usuario = servicio.Buscar(id_depto);
 				
@@ -81,15 +83,15 @@ public class ServletUsuario extends HttpServlet {
 					direccion ="Usuario?accion=QRY";
 				}
 			} else {
-                mensaje = "No se ha recibido el ID de Departamento.";
-                direccion = "Departamento?accion=QRY";
+                mensaje = "No se ha recibido el ID de Usuario.";
+                direccion = "Usuario?accion=QRY";
             }
 			break;
 			
 			
 		case "UPD":
 			 usuario = new Usuario();
-			 usuario.setId(Integer.parseInt(request.getParameter("id_depto")));
+			 usuario.setId(Integer.parseInt(request.getParameter("id_acceso")));
 			 usuario.setNombre(request.getParameter("nombre"));
 			 usuario.setApellido(request.getParameter("apellido"));
 			 usuario.setPuesto(request.getParameter("puesto"));
@@ -106,7 +108,7 @@ public class ServletUsuario extends HttpServlet {
 		
 				
 		case "DEL":
-			int id_el = Integer.parseInt(request.getParameter("id"));
+			int id_el = Integer.parseInt(request.getParameter("id_acceso"));
 			
 			if (id_el != 0) {
 				servicio.Eliminar(id_el);
@@ -114,9 +116,9 @@ public class ServletUsuario extends HttpServlet {
 				
 			} else {
 				mensaje = "No se obtuvo el valor a eliminar";
-				direccion ="Departamento?accion=QRY";
+				direccion ="Usuario?accion=QRY";
 			}
-			direccion ="Departamento?accion=QRY";
+			direccion ="Usuario?accion=QRY";
 			break;
 			
 		default:

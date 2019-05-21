@@ -19,7 +19,7 @@ public class UsuarioDAO implements ServicioUsuario {
 	public List<Usuario> mostra() {
 		
 		List<Usuario> lista = null;
-		String sentencia = "select id_departamento, descripcion from departamento";
+		String sentencia = "select id_acceso, nombre,apellido,setPuesto from login";
 		Connection cn = db.Conectar();
 		
 		if (cn != null) {
@@ -55,8 +55,9 @@ public class UsuarioDAO implements ServicioUsuario {
 
 	@Override
 	public void Insertar(Usuario usuario) {
-		String sentencia = "Insert into departamento (descripcion) values (?)";
+		String sentencia = "Insert into login (nombre,apellido,puesto,password) values (?,?,?,?)";
 		Connection cn = db.Conectar();
+		System.out.println("LLego aqui");
 		if (cn != null) {
 			try {
 				PreparedStatement st = cn.prepareStatement(sentencia);
@@ -87,7 +88,7 @@ public class UsuarioDAO implements ServicioUsuario {
 	@Override
 	public Usuario Buscar(int id) {
 		Usuario usuario = null;
-		String sentencia = "select id_departamento, descripcion from departamento where id_departamento =  ?";
+		String sentencia = "select id_acceso, nombre,apellido,puesto,password from login where id_acceso =  ?";
 		Connection cn = db.Conectar();
 		if (cn != null ) {
 			try {
@@ -96,7 +97,6 @@ public class UsuarioDAO implements ServicioUsuario {
 				ResultSet rs = st.executeQuery();
 				while (rs.next()) {
 					usuario = new Usuario();
-					usuario.setId(rs.getInt(1));
 					usuario.setId(rs.getInt(1));
 					usuario.setNombre(rs.getString(2));
 					usuario.setApellido(rs.getString(3));
@@ -121,7 +121,7 @@ public class UsuarioDAO implements ServicioUsuario {
 
 	@Override
 	public void Actualizar(Usuario usuario) {
-		String sentencia = "update departamento set descripcion =? where id_departamento =  ?";
+		String sentencia = "update login set nombre =?,apellido=?,puesto=?,password=? where id_acceso =  ?";
 		Connection cn = db.Conectar();
 		if (cn != null ) {
 			try {
@@ -155,7 +155,7 @@ public class UsuarioDAO implements ServicioUsuario {
 
 	@Override
 	public void Eliminar(int id) {
-		String sentencia = "delete from departamento where id_departamento = ?";
+		String sentencia = "delete from login where id_acceso = ?";
 		Connection cn = db.Conectar();
 		if (cn != null ) {
 			try {
