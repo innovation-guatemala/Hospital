@@ -12,8 +12,6 @@
 			<h2>Formulario para creacion de Usuario</h2>
 		</div>
 		<div class="card-body">
-		<form>
-		<div class="modal-body">
 		<form action="Usuario" method="POST" class="form-horizontal">
 		<input type="hidden" name="accion" value="INS" />
 			<div class="form-group">
@@ -42,11 +40,8 @@
 			</div>
 			  	   
 				   <button type="submit" class="btn btn-primary">Crear</button>
-				   <button type="button" class="btn btn-danger btn-pill"
-					data-dismiss="modal">Cancelar</button>
+				   <button type="button" class="btn btn-danger btn-pill">Cancelar</button>
 		     </form>
-			 </div>		
-		</form>
 		</div>
 	</div>
 </div>

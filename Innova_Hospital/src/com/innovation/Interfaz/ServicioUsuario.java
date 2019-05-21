@@ -19,4 +19,6 @@ public interface ServicioUsuario {
 	
 	public String GetMensaje();
 	
+	public Usuario Validar(String usuario, String pass);
+	
 }
