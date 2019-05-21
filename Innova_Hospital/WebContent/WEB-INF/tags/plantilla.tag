@@ -107,21 +107,20 @@
 						</a>
 							<ul class="collapse" id="cobro" data-parent="#sidebar-menu">
 								<div class="sub-menu">
-									<li><a class="sidenav-item-link" href="index.xhtml">
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp">
 											<span class="nav-text">Nuevo Expediente</span>
 									</a></li>
-									<li><a class="sidenav-item-link"
-										href="javascript:void(0)" data-toggle="collapse"
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp" data-toggle="collapse"
 										data-target="#nuevocaso" aria-expanded="false"
 										aria-controls="nuevocaso"> <span class="nav-text">Nuevo
 												Caso</span><b class="caret"></b>
 									</a>
 										<ul class="collapse" id="nuevocaso">
 											<div class="sub-menu">
-												<li><a href="#">Nuevo Cobro</a></li>
-												<li><a href="#">Nuevo Credito</a></li>
-												<li><a href="#">Realizar abono de vale</a></li>
-												<li><a href="#">Gastos de Hospitalización</a></li>
+												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Nuevo Cobro</a></li>
+												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Nuevo Credito</a></li>
+												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Realizar abono de vale</a></li>
+												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Gastos de Hospitalización</a></li>
 											</div>
 										</ul></li>
 								</div>
@@ -135,13 +134,13 @@
 						</a>
 							<ul class="collapse" id="paciente" data-parent="#sidebar-menu">
 								<div class="sub-menu">
-									<li><a class="sidenav-item-link" href="#"> <span
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
 											class="nav-text">Nuevo Paciente</span>
 									</a></li>
-									<li><a class="sidenav-item-link" href="#"> <span
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
 											class="nav-text">Nueva Cita</span>
 									</a></li>
-									<li><a class="sidenav-item-link" href="#"> <span
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
 											class="nav-text">Agenda</span>
 									</a></li>
 								</div>
@@ -176,13 +175,13 @@
 							<ul class="collapse" id="sistema" data-parent="#sidebar-menu">
 								<div class="sub-menu">
 									<li><a class="sidenav-item-link"
-										href="/WebContent/Usuario.jsp"> <span class="nav-text">Nuevo
+										href="../Innova_Hospital/Usuario.jsp"> <span class="nav-text">Nuevo
 												Usuario</span>
 									</a></li>
-									<li><a class="sidenav-item-link" href="#"> <span
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
 											class="nav-text">Modificar Usuario</span>
 									</a></li>
-									<li><a class="sidenav-item-link" href="#"> <span
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
 											class="nav-text">Agenda</span>
 									</a></li>
 								</div>

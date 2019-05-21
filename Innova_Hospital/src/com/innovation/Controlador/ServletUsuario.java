@@ -63,7 +63,7 @@ public class ServletUsuario extends HttpServlet {
 				request.setAttribute("apellido",apellido);
 				request.setAttribute("puesto",puesto);
 				request.setAttribute("password",password);
-				direccion ="Usuario?accion=QRY";
+				direccion ="Usuario.jsp";
 				System.out.println("Llego aqui 2");
 			} else {
 				direccion ="Usuario?accion=QRY";
