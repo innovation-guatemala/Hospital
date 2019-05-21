@@ -13,7 +13,7 @@
 		</div>
 		<div class="card-body">
 		<form action="Usuario" method="POST" class="form-horizontal">
-		<input type="hidden" name="accion" value="INS" />
+		<input type="hidden" name="accion" value="INS"/>
 			<div class="form-group">
 				<label for="InputNombre">Nombre</label>
 				<input type="text" class="form-control" id="InputNombre"
