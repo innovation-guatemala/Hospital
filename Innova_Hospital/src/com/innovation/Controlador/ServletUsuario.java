@@ -36,9 +36,9 @@ public class ServletUsuario extends HttpServlet {
 		switch (accion) {
 		
 		case "QRY":
-			List<Usuario> lista = servicio.mostra();
-			if (lista != null) {
-				request.setAttribute("lista", lista);
+			List<Usuario> listaUsuario = servicio.mostra();
+			if (listaUsuario != null) {
+				request.setAttribute("lista", listaUsuario);
 			} else {
 				mensaje = servicio.GetMensaje();
 			}
@@ -57,14 +57,12 @@ public class ServletUsuario extends HttpServlet {
 			usuario.setPassword(password);
 			servicio.Insertar(usuario);
 			mensaje = servicio.GetMensaje();
-			System.out.println("Llego aqui 1");
 			if (mensaje != null) {
 				request.setAttribute("nombre",nombre);
 				request.setAttribute("apellido",apellido);
 				request.setAttribute("puesto",puesto);
 				request.setAttribute("password",password);
-				direccion ="Usuario.jsp";
-				System.out.println("Llego aqui 2");
+				direccion ="Usuario?accion=QRY";
 			} else {
 				direccion ="Usuario?accion=QRY";
 			}
@@ -99,7 +97,7 @@ public class ServletUsuario extends HttpServlet {
 			 servicio.Actualizar(usuario);
 			 mensaje = servicio.GetMensaje();
 				if (mensaje != null) {
-					request.setAttribute("usuario",usuario);
+					request.setAttribute("Usuario",usuario);
 					direccion ="Usuario?accion=QRY";
 				} else {
 					direccion ="Usuario?accion=QRY";
@@ -140,7 +138,7 @@ public class ServletUsuario extends HttpServlet {
 		}
 		
 		if (mensaje != null) {
-			String msg = "<div class=\"col-md-5 col-md-offset-3\" style=\"text-align: center\">";
+			String msg = "<div class=\"col-md-5 col-md-offset-3\" style=\"width: 200px; height: 100px;\">";
 			msg += "<div class=\"alert alert-danger\">";
 			msg += "<button class=\"close\" data-dismiss=\"alert\"><span>&times;</span></button>";
 			msg += "<strong>Alerta!!</strong><br/>";

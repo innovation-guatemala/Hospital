@@ -15,27 +15,27 @@
 											<h2>Departamento</h2>
 										</div>
 										<div class="card-body">
-											<p class="mb-5">Lista de Usuario
+											<p class="mb-5">Lista de Departamentos
 											</p>
 											<table id="table_id" class="table">
+												<thead>
+													<tr>
+														<th scope="col">Departamento</th>
+														<th scope="col"><button type="button" class="mb-1 btn btn-sm btn-primary" data-toggle="modal" data-target="#Insertar-Modal">
+														Crear Departamento</button> </th>
+													</tr>
+												</thead>
 												<tbody>
-												<c:forEach var="n" items="${listaUsuario}">
+												<c:forEach var="n" items="${lista}">
 													<tr>
 														<td>${n.nombre}</td>
-														<td style="text-align: center"><a
-													class="mb-1 btn btn-sm btn-info"
-													data-toggle="modal" data-book-id="${n.id_acceso}"
-													data-book-id2="${n.nombre}">
-                                                		<span
-														class="mdi mdi-update"> Actualizar</span>
-												</a></td>
+														<td style="text-align: center"><a href="#Actualizar_Modal" class="mb-1 btn btn-sm btn-info" 
+                                               			data-toggle="modal" data-book-id="${n.id_acceso}" data-book-id2="${n.nombre}">
+                                                		<span class="mdi mdi-update"> Actualizar</span></a></td>
                                                 		
-                                                		<td
-													style="text-align: center"><a class="mb-1 btn btn-sm btn-danger" data-toggle="modal"
-													data-book-id="${n.id_acceso}">
-                                                		<span
-														class="mdi mdi-delete"> Eliminar</span>
-												</a></td>
+                                                		<td style="text-align: center"><a href="#Eliminar_Modal" class="mb-1 btn btn-sm btn-danger" 
+                                               			data-toggle="modal" data-book-id="${n.id_acceso}" >
+                                                		<span class="mdi mdi-delete"> Eliminar</span></a></td>
 													</tr>
 												</c:forEach>
 												</tbody>
@@ -44,8 +44,7 @@
 									</div>
 								</div>
 						</div>
-					<br />
-	
+					<br/>	
 	
 	</jsp:attribute>
 

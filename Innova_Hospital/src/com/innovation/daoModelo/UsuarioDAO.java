@@ -19,7 +19,7 @@ public class UsuarioDAO implements ServicioUsuario {
 	public List<Usuario> mostra() {
 		
 		List<Usuario> lista = null;
-		String sentencia = "select id_acceso, nombre,apellido,setPuesto from login";
+		String sentencia = "select id_acceso, nombre,apellido,puesto from login";
 		Connection cn = db.Conectar();
 		
 		if (cn != null) {
@@ -33,7 +33,6 @@ public class UsuarioDAO implements ServicioUsuario {
 					usuario.setNombre(rs.getString(2));
 					usuario.setApellido(rs.getString(3));
 					usuario.setPuesto(rs.getString(4));
-					usuario.setPassword(rs.getString(5));
 					lista.add(usuario);
 				}
 				st.close();
@@ -88,7 +87,7 @@ public class UsuarioDAO implements ServicioUsuario {
 	@Override
 	public Usuario Buscar(int id) {
 		Usuario usuario = null;
-		String sentencia = "select id_acceso, nombre,apellido,puesto,password from login where id_acceso =  ?";
+		String sentencia = "select id_acceso, nombre,apellido,puesto from login where id_acceso =  ?";
 		Connection cn = db.Conectar();
 		if (cn != null ) {
 			try {
