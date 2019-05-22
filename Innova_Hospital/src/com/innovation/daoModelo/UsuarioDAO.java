@@ -19,7 +19,7 @@ public class UsuarioDAO implements ServicioUsuario {
 	public List<Usuario> mostra() {
 		
 		List<Usuario> lista = null;
-		String sentencia = "select id_acceso, nombre,apellido,puesto from login";
+		String sentencia = "select id_acceso,nombre,apellido,puesto,password from login";
 		Connection cn = db.Conectar();
 		
 		if (cn != null) {
@@ -33,7 +33,9 @@ public class UsuarioDAO implements ServicioUsuario {
 					usuario.setNombre(rs.getString(2));
 					usuario.setApellido(rs.getString(3));
 					usuario.setPuesto(rs.getString(4));
+					usuario.setPassword(rs.getString(5));
 					lista.add(usuario);
+					System.out.println("Al menos consulta : "+ usuario.getId() +" " + usuario.getNombre() +" "+ usuario.getApellido() + " " + usuario.getPuesto() + " " + usuario.getPassword());
 				}
 				st.close();
 			} catch (SQLException e) {

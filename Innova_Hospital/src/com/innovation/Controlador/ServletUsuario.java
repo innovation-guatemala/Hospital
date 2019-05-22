@@ -36,9 +36,10 @@ public class ServletUsuario extends HttpServlet {
 		switch (accion) {
 		
 		case "QRY":
-			List<Usuario> listaUsuario = servicio.mostra();
-			if (listaUsuario != null) {
-				request.setAttribute("lista", listaUsuario);
+			List<Usuario> listausuario = servicio.mostra();
+			if (listausuario != null) {
+				request.setAttribute("lista", listausuario);
+				System.out.println(" lista " + listausuario.get(1).getNombre());
 			} else {
 				mensaje = servicio.GetMensaje();
 			}
