@@ -23,7 +23,7 @@
 													<tr>
 														<td>${n.nombre}</td>
 														<td style="text-align: center"><a
-													href="#Actualizar_Modal" class="mb-1 btn btn-sm btn-info"
+													class="mb-1 btn btn-sm btn-info"
 													data-toggle="modal" data-book-id="${n.id_acceso}"
 													data-book-id2="${n.nombre}">
                                                 		<span
@@ -31,8 +31,7 @@
 												</a></td>
                                                 		
                                                 		<td
-													style="text-align: center"><a href="#Eliminar_Modal"
-													class="mb-1 btn btn-sm btn-danger" data-toggle="modal"
+													style="text-align: center"><a class="mb-1 btn btn-sm btn-danger" data-toggle="modal"
 													data-book-id="${n.id_acceso}">
                                                 		<span
 														class="mdi mdi-delete"> Eliminar</span>
