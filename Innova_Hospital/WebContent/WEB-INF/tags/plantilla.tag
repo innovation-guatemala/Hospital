@@ -178,7 +178,7 @@
 										href="../Innova_Hospital/Usuario.jsp"> <span class="nav-text">Nuevo
 												Usuario</span>
 									</a></li>
-									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/usuariomodificar.jsp"> <span
 											class="nav-text">Modificar Usuario</span>
 									</a></li>
 									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
