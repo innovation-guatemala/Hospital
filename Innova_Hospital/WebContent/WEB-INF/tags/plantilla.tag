@@ -134,7 +134,7 @@
 						</a>
 							<ul class="collapse" id="paciente" data-parent="#sidebar-menu">
 								<div class="sub-menu">
-									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/creacionpaciente.jsp"> <span
 											class="nav-text">Nuevo Paciente</span>
 									</a></li>
 									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
