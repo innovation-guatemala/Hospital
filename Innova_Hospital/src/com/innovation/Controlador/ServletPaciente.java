@@ -68,6 +68,7 @@ public class ServletPaciente extends HttpServlet {
 			usuario.setNombres(nombre);
 			usuario.setApellidos(apellido);
 			usuario.setDpi(dpi);
+			//usuario.set
 			SimpleDateFormat format = new SimpleDateFormat("ddmmyyyy");
 			try {
 				Date parsed = (Date) format.parse(fecha_nacimiento);
