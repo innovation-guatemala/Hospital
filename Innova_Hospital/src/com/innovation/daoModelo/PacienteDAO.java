@@ -1,6 +1,7 @@
 package com.innovation.daoModelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ public class PacienteDAO implements ServicioPaciente {
 	public List<Paciente> mostra() {
 		
 		List<Paciente> lista = null;
-		String sentencia = "select id_paciente,nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,fecha_creacion,usuario_creacion,fecha_modificacion,usuario_modificacion from paciente";
+		String sentencia = "select id_paciente,nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion from paciente";
 		Connection cn = db.Conectar();
 		
 		if (cn != null) {
@@ -49,10 +50,6 @@ public class PacienteDAO implements ServicioPaciente {
 					usuario.setNombre_factura(rs.getString(18));
 					usuario.setDireccion_factura(rs.getString(19));
 					usuario.setUbicacion(rs.getString(20));
-					usuario.setFecha_creacion(rs.getDate(21));
-					usuario.setUsuario_creacion(rs.getString(22));
-					usuario.setFecha_modificacion(rs.getDate(23));
-					usuario.setUsuario_modificacion(rs.getString(24));
 					lista.add(usuario);
 				}
 				st.close();
@@ -82,7 +79,7 @@ public class PacienteDAO implements ServicioPaciente {
 				st.setString(1, paciente.getNombres());
 				st.setString(2, paciente.getApellidos());
 				st.setString(3, paciente.getDpi());
-				st.setDate(4, paciente.getFecha_nacimiento());
+				st.setDate(4,  (Date) paciente.getFecha_nacimiento());
 				st.setString(5, paciente.getSexo());
 				st.setString(6, paciente.getAlergias());
 				st.setString(7, paciente.getAntecedentes_personales());
@@ -98,10 +95,6 @@ public class PacienteDAO implements ServicioPaciente {
 				st.setString(17, paciente.getNombre_factura());
 				st.setString(18, paciente.getDireccion_factura());
 				st.setString(19, paciente.getUbicacion());
-				st.setDate(20, paciente.getFecha_creacion());
-				st.setString(21, paciente.getUsuario_creacion());
-				st.setDate(22, paciente.getFecha_modificacion());
-				st.setString(23, paciente.getUsuario_modificacion());
 				
 				int exec = st.executeUpdate();
 				if (exec == 0) {
@@ -125,7 +118,7 @@ public class PacienteDAO implements ServicioPaciente {
 
 	public Paciente Buscar(int id) {
 		Paciente paciente = null;
-		String sentencia = "select id_paciente,nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,fecha_creacion,usuario_creacion,fecha_modificacion,usuario_modificacion from paciente where id_paciente =  ?";
+		String sentencia = "select id_paciente,nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion from paciente where id_paciente =  ?";
 		Connection cn = db.Conectar();
 		if (cn != null ) {
 			try {
@@ -138,7 +131,7 @@ public class PacienteDAO implements ServicioPaciente {
 					st.setString(1, paciente.getNombres());
 					st.setString(2, paciente.getApellidos());
 					st.setString(3, paciente.getDpi());
-					st.setDate(4, paciente.getFecha_nacimiento());
+					st.setDate(4, (Date) paciente.getFecha_nacimiento());
 					st.setString(5, paciente.getSexo());
 					st.setString(6, paciente.getAlergias());
 					st.setString(7, paciente.getAntecedentes_personales());
@@ -154,10 +147,6 @@ public class PacienteDAO implements ServicioPaciente {
 					st.setString(17, paciente.getNombre_factura());
 					st.setString(18, paciente.getDireccion_factura());
 					st.setString(19, paciente.getUbicacion());
-					st.setDate(20, paciente.getFecha_creacion());
-					st.setString(21, paciente.getUsuario_creacion());
-					st.setDate(22, paciente.getFecha_modificacion());
-					st.setString(23, paciente.getUsuario_modificacion());
 				}
 				st.close();
 			} catch (SQLException e) {
@@ -210,6 +199,12 @@ public class PacienteDAO implements ServicioPaciente {
 	
 	public void SetMensaje (String msj) {
 		this.mensaje = msj;
+	}
+
+	@Override
+	public void Actualizar(Paciente usuario) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

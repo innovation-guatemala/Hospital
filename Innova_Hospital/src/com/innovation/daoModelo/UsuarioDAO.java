@@ -21,7 +21,6 @@ public class UsuarioDAO implements ServicioUsuario {
 		List<Usuario> lista = null;
 		String sentencia = "select id_acceso,nombre,apellido,puesto,password from login";
 		Connection cn = db.Conectar();
-		
 		if (cn != null) {
 			try {
 				PreparedStatement st = cn.prepareStatement(sentencia);
@@ -58,7 +57,6 @@ public class UsuarioDAO implements ServicioUsuario {
 	public void Insertar(Usuario usuario) {
 		String sentencia = "Insert into login (nombre,apellido,puesto,password) values (?,?,?,?)";
 		Connection cn = db.Conectar();
-		System.out.println("LLego aqui");
 		if (cn != null) {
 			try {
 				PreparedStatement st = cn.prepareStatement(sentencia);

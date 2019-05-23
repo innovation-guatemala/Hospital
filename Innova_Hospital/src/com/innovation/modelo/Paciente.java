@@ -1,6 +1,6 @@
 package com.innovation.modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Paciente {
 
@@ -24,10 +24,6 @@ public class Paciente {
 	private String nombre_factura;
 	private String direccion_factura;
 	private String ubicacion;
-	private Date fecha_creacion;
-	private String usuario_creacion;
-	private Date fecha_modificacion;
-	private String usuario_modificacion;
 	
 	public int getId_paciente() {
 		return id_paciente;
@@ -150,30 +146,5 @@ public class Paciente {
 	public void setDireccion_factura(String direccion_factura) {
 		this.direccion_factura = direccion_factura;
 	}
-	public String getUsuario_creacion() {
-		return usuario_creacion;
-	}
-	public void setUsuario_creacion(String usuario_creacion) {
-		this.usuario_creacion = usuario_creacion;
-	}
-	public String getUsuario_modificacion() {
-		return usuario_modificacion;
-	}
-	public void setUsuario_modificacion(String usuario_modificacion) {
-		this.usuario_modificacion = usuario_modificacion;
-	}
-	public Date getFecha_creacion() {
-		return fecha_creacion;
-	}
-	public void setFecha_creacion(Date fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
-	}
-	public Date getFecha_modificacion() {
-		return fecha_modificacion;
-	}
-	public void setFecha_modificacion(Date fecha_modificacion) {
-		this.fecha_modificacion = fecha_modificacion;
-	}
-	
 	
 }

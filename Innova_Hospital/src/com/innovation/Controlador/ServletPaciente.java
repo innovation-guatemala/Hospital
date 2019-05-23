@@ -2,7 +2,6 @@ package com.innovation.Controlador;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -42,7 +41,7 @@ public class ServletPaciente extends HttpServlet {
 			} else {
 				mensaje = servicio.GetMensaje();
 			}
-			direccion = "paciente.jsp";
+			direccion = "creacionpaciente.jsp";
 			break;
 			
 		case "INS":
@@ -66,13 +65,17 @@ public class ServletPaciente extends HttpServlet {
 			String nombre_factura = request.getParameter("nombre_factura");
 			String direccion_factura = request.getParameter("direccion_factura");
 			String ubicacion = request.getParameter("ubicacion");
-			String fecha_creacion = request.getParameter("fecha_creacion");			
-			String usuario_creacion = request.getParameter("usuario_creacion");
-			String fecha_modificacion = request.getParameter("fecha_modificacion");
-			String usuario_modificacion = request.getParameter("usuario_modificacion");
 			usuario.setNombres(nombre);
 			usuario.setApellidos(apellido);
-			
+			usuario.setDpi(dpi);
+			SimpleDateFormat format = new SimpleDateFormat("ddmmyyyy");
+			try {
+				Date parsed = (Date) format.parse(fecha_nacimiento);
+				usuario.setFecha_nacimiento(new java.util.Date(parsed.getTime()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			servicio.Insertar(usuario);
 			mensaje = servicio.GetMensaje();
 			if (mensaje != null) {
@@ -95,10 +98,6 @@ public class ServletPaciente extends HttpServlet {
 				request.setAttribute("nombre_factura", nombre_factura);
 				request.setAttribute("direccion_factura", direccion_factura);
 				request.setAttribute("ubicacion", ubicacion);
-				request.setAttribute("fecha_creacion", fecha_creacion);
-				request.setAttribute("usuario_creacion", usuario_creacion);
-				request.setAttribute("fecha_modificacion", fecha_modificacion);
-				request.setAttribute("usuario_modificacion", usuario_modificacion);
 				direccion ="Paciente?accion=QRY";
 			} else {
 				direccion ="Paciente?accion=QRY";
@@ -126,20 +125,18 @@ public class ServletPaciente extends HttpServlet {
 			
 		case "UPD":
 			 usuario = new Paciente();
-			 DateFormat formatter;
-			 formatter = new SimpleDateFormat("dd-MMM-yy");
 			 usuario.setId_paciente(Integer.parseInt(request.getParameter("id_paciente")));
 			 usuario.setNombres(request.getParameter("nombres"));
 			 usuario.setApellidos(request.getParameter("apellidos"));
 			 usuario.setDpi(request.getParameter("dpi"));
-			 try {
-				usuario.setFecha_nacimiento((Date) formatter.parse(request.getParameter("fecha_nacimiento")));
-				usuario.setFecha_creacion((Date) formatter.parse(request.getParameter("fecha_creacion")));
-				usuario.setFecha_modificacion((Date) formatter.parse(request.getParameter("fecha_modificacion")));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd");
+				try {
+					Date parsed1 = (Date) format1.parse("fecha_nacimiento");
+					usuario.setFecha_nacimiento(new java.sql.Date(parsed1.getTime()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 usuario.setSexo(request.getParameter("sexo"));
 			 usuario.setAlergias(request.getParameter("alergias"));
 			 usuario.setAntecedentes_personales(request.getParameter("antecedentes_personales"));
@@ -155,8 +152,6 @@ public class ServletPaciente extends HttpServlet {
 			 usuario.setNombre_factura(request.getParameter("nombre_factura"));
 			 usuario.setDireccion_factura(request.getParameter("direccion_factura"));
 			 usuario.setUbicacion(request.getParameter("ubicacion"));
-			 usuario.setUsuario_creacion(request.getParameter("usuario_creacion"));
-			 usuario.setUsuario_modificacion(request.getParameter("usuario_creacion"));
 			 servicio.Actualizar(usuario);
 			 mensaje = servicio.GetMensaje();
 				if (mensaje != null) {
