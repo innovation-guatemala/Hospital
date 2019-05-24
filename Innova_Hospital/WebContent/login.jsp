@@ -56,7 +56,7 @@
                       <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
                     </g>
                   </svg>
-                  <span class="brand-name">Innova GT</span>
+                  <span class="brand-name">Innovation Guatemala</span>
                 </a>
               </div>
             </div>
@@ -75,21 +75,7 @@
                     <input type="password" class="form-control input-lg" id="password" placeholder="Contraseña"
                     name="password" value="">
                   </div>
-                  <div class="col-md-12">
-                    <div class="d-flex my-2 justify-content-between">
-                      <div class="d-inline-block mr-3">
-                        <label class="control control-checkbox">Recordar datos
-                          <input type="checkbox" />
-                          <div class="control-indicator"></div>
-                        </label>
-                
-                      </div>
-                      <p><a class="text-blue" href="#">Olvidó Contraseña?</a></p>
-                    </div>
                     <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">Iniciar Sesion</button>
-                    <p>Aun no tiene una cuenta ?
-                      <a class="text-blue" href="#">Crear cuenta</a>
-                    </p>
                   </div>
                 </div>
               </form>
@@ -97,11 +83,31 @@
           </div>
         </div>
       </div>
-      <div class="copyright pl-0">
-        <p class="text-center">&copy; Derechos Innovation Guatemala Desarrollos
-          <a class="text-primary" href="#" target="_blank">ERP Hospitales 2019.</a>.
-        </p>
-      </div>
+			<footer class="footer mt-auto">
+				<div class="columna1">
+					<h4>Contactos</h4>
+					<i class="mdi mdi-email"><a
+						href="mailto:innovationguatemala502@gmail.com">Correo</a></i>
+					<p>+50235202402</p>
+				</div>
+				<div class="columna2">
+					<h4>Frase</h4>
+					<p>El buen médico trata la enfermedad; el gran médico</p>
+					<p>trata al paciente que tiene la enfermedad</p>
+				</div>
+				<div class="columna3">
+					<h4>Redes sociales</h4>
+					<i class="mdi mdi-facebook-box"><a
+						href="https://www.facebook.com/profile.php?id=100015131490682"
+						target="_blank">Facebook</a> </i>
+				</div>
+				<div class="columna4">
+					<h4>Derechos</h4>
+					<p>Innovation Guatemala Desarrollos</p>
+					<a class="text-primary" href="http://www.iamabdus.com/"
+						target="_blank">ERP Hospitales 2019</a>.
+				</div>
+			</footer>
     </div>
 </body>
 </html>
