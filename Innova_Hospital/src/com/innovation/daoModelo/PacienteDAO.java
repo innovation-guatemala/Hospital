@@ -5,6 +5,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -70,11 +74,12 @@ public class PacienteDAO implements ServicioPaciente {
 	}
 
 	public void Insertar(Paciente paciente) {
-		String sentencia = "Insert into login (nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,fecha_creacion,usuario_creacion,fecha_modificacion,usuario_modificacion) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sentencia = "Insert into paciente (nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,fecha_creacion) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection cn = db.Conectar();
-		System.out.println("LLego aqui");
+		System.out.println("Insert del paciente");
 		if (cn != null) {
 			try {
+				System.out.println("Insert del paciente entro al try");
 				PreparedStatement st = cn.prepareStatement(sentencia);
 				st.setString(1, paciente.getNombres());
 				st.setString(2, paciente.getApellidos());
@@ -95,6 +100,23 @@ public class PacienteDAO implements ServicioPaciente {
 				st.setString(17, paciente.getNombre_factura());
 				st.setString(18, paciente.getDireccion_factura());
 				st.setString(19, paciente.getUbicacion());
+
+				//calendario para fecha creacion
+				Calendar fecha = new GregorianCalendar();
+		        int anio = fecha.get(Calendar.YEAR);
+		        int mes = fecha.get(Calendar.MONTH);
+		        int dia = fecha.get(Calendar.DAY_OF_MONTH);
+		        int hora = fecha.get(Calendar.HOUR_OF_DAY);
+		        int minuto = fecha.get(Calendar.MINUTE);
+		        int segundo = fecha.get(Calendar.SECOND);
+		        
+		        String fechaCreacion = String.valueOf(dia) +"/" + String.valueOf(mes+1) + "/"+ String.valueOf(anio);
+		        System.out.println("fecha creacion " + fechaCreacion);
+		        long date=new SimpleDateFormat("dd/MM/yyyy").parse(fechaCreacion,new ParsePosition(0)).getTime();
+		        System.out.println("test fechaCreacion " + date);
+				java.sql.Date dbDate=new java.sql.Date(date);
+				System.out.println("fecha creacion " + dbDate);
+				st.setDate(20, (Date) dbDate);
 				
 				int exec = st.executeUpdate();
 				if (exec == 0) {
@@ -103,6 +125,12 @@ public class PacienteDAO implements ServicioPaciente {
 				st.close();
 			} catch (SQLException e) {
 				SetMensaje("Problema con insertar: " + e.getMessage());
+				e.printStackTrace();
+				System.out.println("no inserto paciente SQL exception");
+			}catch (Exception e) {
+				SetMensaje("Problema con insertar: " + e.getMessage());
+				System.out.println("no inserto paciente exception general");
+				e.printStackTrace();
 			} finally {
 				try {
 					cn.close();

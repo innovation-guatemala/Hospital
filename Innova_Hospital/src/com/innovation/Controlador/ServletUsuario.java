@@ -139,7 +139,7 @@ public class ServletUsuario extends HttpServlet {
 		
 		if (mensaje != null) {
 			String msg = "<div class=\"col-md-5 col-md-offset-3\" style=\"width: 200px; height: 100px;\">";
-			msg += "<div class=\"alert alert-danger\">";
+			msg += "<div class=\"alert alert-danger\" style=\"width: 300px;\">";
 			msg += "<button class=\"close\" data-dismiss=\"alert\"><span>&times;</span></button>";
 			msg += "<strong>Alerta!!</strong><br/>";
 			msg += mensaje;

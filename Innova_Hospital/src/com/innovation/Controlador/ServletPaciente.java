@@ -3,7 +3,10 @@ package com.innovation.Controlador;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -68,15 +71,35 @@ public class ServletPaciente extends HttpServlet {
 			usuario.setNombres(nombre);
 			usuario.setApellidos(apellido);
 			usuario.setDpi(dpi);
-			//usuario.set
-			SimpleDateFormat format = new SimpleDateFormat("ddmmyyyy");
+			SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
 			try {
-				Date parsed = (Date) format.parse(fecha_nacimiento);
-				usuario.setFecha_nacimiento(new java.util.Date(parsed.getTime()));
-			} catch (ParseException e) {
+				
+				String dat=fecha_nacimiento;
+				long date=new SimpleDateFormat("dd/MM/yyyy").parse(dat,new ParsePosition(0)).getTime();
+				java.sql.Date dbDate=new java.sql.Date(date);
+				System.out.println(dbDate);
+				
+				    usuario.setFecha_nacimiento(dbDate);
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			usuario.setSexo(sexo);
+			usuario.setAlergias(alergias);
+			usuario.setAntecedentes_personales(antecedentes_personales);
+			usuario.setAntecedentes_familiares(antecedentes_familiares);
+			usuario.setAnotaciones_importantes(anotaciones_importantes);
+			usuario.setPadre(padre); 
+			usuario.setMadre(madre); 
+			usuario.setEncargado(encargado);
+			usuario.setDireccion(direccion1);
+			usuario.setDpi_encargado(dpi_encargado); 
+			usuario.setTelefono(telefono);
+			usuario.setNit(nit);
+			usuario.setNombre_factura(nombre_factura);
+			usuario.setDireccion_factura(direccion_factura);
+			usuario.setUbicacion(ubicacion);
+			
 			servicio.Insertar(usuario);
 			mensaje = servicio.GetMensaje();
 			if (mensaje != null) {
