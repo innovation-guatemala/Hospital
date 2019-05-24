@@ -14,19 +14,18 @@ import com.innovation.Interfaz.ServicioUsuario;
 import com.innovation.daoModelo.UsuarioDAO;
 import com.innovation.modelo.Usuario;
 
-
+/**
+ * Servlet implementation class ServletUsuario
+ */
 @WebServlet("/Usuario")
 public class ServletUsuario extends HttpServlet {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		String accion = request.getParameter("accion");
 		String mensaje = null;
 		String direccion = null;
@@ -39,6 +38,7 @@ public class ServletUsuario extends HttpServlet {
 			List<Usuario> listausuario = servicio.mostra();
 			if (listausuario != null) {
 				request.setAttribute("lista", listausuario);
+				System.out.println(" lista " + listausuario.get(1).getNombre());
 			} else {
 				mensaje = servicio.GetMensaje();
 			}
@@ -58,13 +58,9 @@ public class ServletUsuario extends HttpServlet {
 			servicio.Insertar(usuario);
 			mensaje = servicio.GetMensaje();
 			if (mensaje != null) {
-				request.setAttribute("nombre",nombre);
-				request.setAttribute("apellido",apellido);
-				request.setAttribute("puesto",puesto);
-				request.setAttribute("password",password);
-				direccion ="Usuario?accion=QRY";
+				direccion ="UsuarioCrear.jsp";
 			} else {
-				direccion ="Usuario?accion=QRY";
+				direccion ="UsuarioCrear.jsp";
 			}
 			break;
 			
@@ -149,7 +145,6 @@ public class ServletUsuario extends HttpServlet {
 		
 		RequestDispatcher despachador = request.getRequestDispatcher(direccion);
 		despachador.forward(request, response);
-		
 	}
 
 }

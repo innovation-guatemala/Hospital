@@ -134,7 +134,7 @@
 						</a>
 							<ul class="collapse" id="paciente" data-parent="#sidebar-menu">
 								<div class="sub-menu">
-									<li><a class="sidenav-item-link" href="../Innova_Hospital/creacionpaciente.jsp"> <span
+									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
 											class="nav-text">Nuevo Paciente</span>
 									</a></li>
 									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
@@ -175,11 +175,12 @@
 							<ul class="collapse" id="sistema" data-parent="#sidebar-menu">
 								<div class="sub-menu">
 									<li><a class="sidenav-item-link"
-										href="../Innova_Hospital/Usuario.jsp"> <span class="nav-text">Nuevo
+										href="../Innova_Hospital/UsuarioCrear.jsp"> <span class="nav-text">Nuevo
 												Usuario</span>
 									</a></li>
-									<li><a class="sidenav-item-link" href="../Innova_Hospital/usuariomodificar.jsp"> <span
-											class="nav-text">Modificar Usuario</span>
+									<li><a class="sidenav-item-link"
+										href="../Innova_Hospital/Usuario?accion=QRY"> <span class="nav-text">
+											Modificar Usuario</span>
 									</a></li>
 									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
 											class="nav-text">Agenda</span>
