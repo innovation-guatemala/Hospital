@@ -24,8 +24,9 @@
 						</span>
 					</div>
 
-				<input type="text" class="form-control" id="InputId_caso" name="id_caso"
-									value="${usuario.id_caso}" placeholder="Numero del caso">
+				<input type="text" class="form-control" id="InputId_caso"
+									name="id_caso" value="${usuario.id_caso}"
+									placeholder="Numero del caso">
 				</div>
 			</div>
 			<div class="form-group">
@@ -37,30 +38,32 @@
 						</span>
 					</div>
 				
-				<input type="text" class="form-control" id="InputFecha"
-									name="fecha" value="${usuario.fecha}"
+				<input type="text" class="form-control" id="InputFecha" name="fecha"
+									value="${usuario.fecha}"
 									placeholder="Fecha de creacion de caso">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="exampleFormControlSelect12">Forma de Pago</label>								
-				<select class="form-control" id="exampleFormControlSelect12">
-				<option value =1>Centro Medico Sanarateco</option>
-				<option value = 2>Cheque o Deposito</option>
-				<option>Credito</option>
-				<option>Tarjeta de Credito</option>
+				<label for="InputId_forma_pago">Forma de Pago</label>								
+				<select class="form-control" id="InputId_forma_pago"
+								name="id_forma_pago">
+				<option value="1">Centro Medico Sanarateco</option>
+				<option value="2">Cheque o Deposito</option>
+				<option value="3">Credito</option>
+				<option value="4">Tarjeta de Credito</option>
 				</select>			
 			</div>
 			<div class="form-group">
-				<label for="exampleFormControlSelect12">Empresa</label>								
-				<select class="form-control" id="exampleFormControlSelect12">
-				<option>Centro Medico Sanarateco</option>
-				<option>Seinsa</option>
+				<label for="InputId_empresa">Empresa</label>								
+				<select class="form-control" id="InputId_empresa" name="id_empresa">
+				<option value="1">Centro Medico Sanarateco</option>
+				<option value="2">Seinsa</option>
 				</select>
 			</div>		  	   
 			<div class="form-group">
-				<label for="exampleFormControlSelect12">Paciente</label>								
-				<select class="form-control" id="exampleFormControlSelect12">
+				<label for="InputId_paciente">Paciente</label>								
+				<select class="form-control" id="InputId_paciente"
+								name="id_paciente">
 				<c:forEach var="n" items="${listapaci}">
 				<option>${n.nombres}</option>
 				</c:forEach>
@@ -75,17 +78,16 @@
 						</span>
 					</div>
 				
-				<input type="text" class="form-control"
-									id="InputDescripcion" name="descripcion"
-									value="${usuario.descripcino}"
+				<input type="text" class="form-control" id="InputDescripcion"
+									name="descripcion" value="${usuario.descripcion}"
 									placeholder="Descripcion del caso">
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="exampleFormControlSelect12">Seguro</label>								
-				<select class="form-control" id="exampleFormControlSelect12">
-				<option>Centro Medico Sanarateco</option>
-				<option>Seinsa</option>
+				<label for="InputId_seguro">Seguro</label>								
+				<select class="form-control" id="InputId_seguro" name="id_paciente">
+				<option value="1">Centro Medico Sanarateco</option>
+				<option value="2">Seinsa</option>
 				</select>
 	     	</div>
 			<div class="form-group">
@@ -97,13 +99,14 @@
 						</span>
 					</div>
 				
-				<input type="text" class="form-control" id="InputDoc_seguro" name="doc_seguro"
-									value="${usuario.doc_seguro}"
+				<input type="text" class="form-control" id="InputDoc_seguro"
+									name="doc_seguro" value="${usuario.doc_seguro}"
 									placeholder="Numero de documento del seguro">
 				</div>
 			</div>
 			<div class="form-group">
-				<label><input type="checkbox" id="concluido" value="first_checkbox"> Concluido</label><br>
+				<label><input type="checkbox" id="concluido"
+								value="first_checkbox"> Concluido</label><br>
 			</div>
 						<div class="form-group">
 				<label for="InputFecha_concluido">Fecha Concluido</label>
