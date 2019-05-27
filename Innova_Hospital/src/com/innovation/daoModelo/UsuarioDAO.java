@@ -35,7 +35,6 @@ public class UsuarioDAO implements ServicioUsuario {
 					usuario.setPuesto(rs.getString(4));
 					usuario.setPassword(rs.getString(5));
 					lista.add(usuario);
-					System.out.println("Al menos consulta : "+ usuario.getId() +" " + usuario.getNombre() +" "+ usuario.getApellido() + " " + usuario.getPuesto() + " " + usuario.getPassword());
 				}
 				st.close();
 			} catch (SQLException e) {

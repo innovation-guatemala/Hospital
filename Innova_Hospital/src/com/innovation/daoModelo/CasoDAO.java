@@ -88,13 +88,13 @@ public class CasoDAO implements ServicioCaso{
 		        int minuto = fecha.get(Calendar.MINUTE);
 		        int segundo = fecha.get(Calendar.SECOND);
 		        
-		        String fechaCreacion = String.valueOf(dia) +"/" + String.valueOf(mes+1) + "/"+ String.valueOf(anio);
+/*		        String fechaCreacion = String.valueOf(dia) +"/" + String.valueOf(mes+1) + "/"+ String.valueOf(anio);
 		        System.out.println("fecha creacion " + fechaCreacion);
 		        long date=new SimpleDateFormat("dd/MM/yyyy").parse(fechaCreacion,new ParsePosition(0)).getTime();
 		        System.out.println("test fechaCreacion " + date);
 				java.sql.Date dbDate=new java.sql.Date(date);
 				System.out.println("fecha creacion " + dbDate);
-				st.setDate(20, (java.sql.Date) dbDate);
+				st.setDate(20, (java.sql.Date) dbDate);*/
 				
 				int exec = st.executeUpdate();
 				if (exec == 0) {
@@ -122,22 +122,28 @@ public class CasoDAO implements ServicioCaso{
 		
 	}
 
-	public List<Paciente> BuscarPaciente() {
-		List<Paciente> lista = null;
-		String sentencia = "select id_paciente,nombres,apellidos,dpi from paciente";
+	public List<Caso> BuscarCaso() {
+		List<Caso> lista = null;
+		String sentencia = "select id_forma_pago,id_empresa,fecha,id_paciente,descripcion,id_seguro,doc_seguro,concluido,fecha_concluido from caso";
 		Connection cn = db.Conectar();
 		if (cn != null ) {
 			try {
 				PreparedStatement st = cn.prepareStatement(sentencia);
 				ResultSet rs = st.executeQuery();
-				lista = new LinkedList<Paciente>();
+				lista = new LinkedList<Caso>();
 				while (rs.next()) {
-					Paciente paciente = new Paciente();
-					paciente.setId_paciente(rs.getInt(1));
-					paciente.setNombres(rs.getString(2));
-					paciente.setApellidos(rs.getString(3));
-					paciente.setDpi(rs.getString(4));
-					lista.add(paciente);
+					Caso caso = new Caso();
+					caso.setId_caso(rs.getInt(1));
+					caso.setId_forma_pago(rs.getInt(2));
+					caso.setId_empresa(rs.getInt(3));
+					caso.setFecha(rs.getDate(4));
+					caso.setId_paciente(rs.getInt(5));
+					caso.setDescripcion(rs.getString(6));
+					caso.setId_seguro(rs.getInt(7));
+					caso.setDoc_seguro(rs.getString(8));
+					caso.setConcluido(rs.getBoolean(9));
+					caso.setFecha_concluido(rs.getDate(10));
+					lista.add(caso);
 				}
 				st.close();
 			} catch (SQLException e) {
@@ -197,5 +203,6 @@ public class CasoDAO implements ServicioCaso{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

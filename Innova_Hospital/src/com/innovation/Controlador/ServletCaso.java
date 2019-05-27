@@ -58,8 +58,6 @@ public class ServletCaso extends HttpServlet {
 			String doc_seguro = request.getParameter("doc_seguro");
 			String concluido = request.getParameter("concluido");
 			String fecha_concluido = request.getParameter("fecha_concluido");
-			System.out.println(id_forma_pago);
-			System.out.println("El id de la empresa es "+id_empresa);
 			usuario.setId_forma_pago(Integer.parseInt(id_forma_pago));
 			usuario.setId_empresa(Integer.parseInt(id_empresa));
 			SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
@@ -103,10 +101,10 @@ public class ServletCaso extends HttpServlet {
 			break;
 			
 		case "SPA":
-			List<Paciente> listapaci = servicio.BuscarPaciente();
-			if (listapaci != null) {
-				request.setAttribute("listapaci", listapaci);
-				System.out.println("listapaci : " + listapaci);
+			List<Paciente> listapaciente = servicio.BuscarPaciente();
+			if (listapaciente != null) {
+				request.setAttribute("listapaciente", listapaciente);
+				System.out.println("listapaciente : " + listapaciente.get(1).getNombres());
 			} else {
 				mensaje = servicio.GetMensaje();
 			}

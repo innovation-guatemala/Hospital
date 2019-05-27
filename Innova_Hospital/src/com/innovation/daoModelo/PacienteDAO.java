@@ -76,10 +76,8 @@ public class PacienteDAO implements ServicioPaciente {
 	public void Insertar(Paciente paciente) {
 		String sentencia = "Insert into paciente (nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,fecha_creacion) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection cn = db.Conectar();
-		System.out.println("Insert del paciente");
 		if (cn != null) {
 			try {
-				System.out.println("Insert del paciente entro al try");
 				PreparedStatement st = cn.prepareStatement(sentencia);
 				st.setString(1, paciente.getNombres());
 				st.setString(2, paciente.getApellidos());

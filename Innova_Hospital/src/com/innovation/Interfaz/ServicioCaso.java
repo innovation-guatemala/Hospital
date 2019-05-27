@@ -3,8 +3,6 @@ package com.innovation.Interfaz;
 import java.util.List;
 
 import com.innovation.modelo.Caso;
-import com.innovation.modelo.Paciente;
-
 
 public interface ServicioCaso {
 
@@ -12,7 +10,7 @@ public interface ServicioCaso {
 	
 	public void Insertar(Caso caso);
 	
-	public List<Paciente> BuscarPaciente();
+	public List<Caso> BuscarCaso();
 	
 	public void Actualizar(Caso caso);
 	
