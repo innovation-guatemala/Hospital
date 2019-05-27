@@ -13,6 +13,7 @@ import com.innovation.modelo.Usuario;
 
 public class UsuarioDAO implements ServicioUsuario {
 
+
 	private final Conexion db = new Conexion();
 	private String mensaje;
 	
@@ -126,11 +127,10 @@ public class UsuarioDAO implements ServicioUsuario {
 			try {
 				PreparedStatement st = cn.prepareStatement(sentencia);
 				st.setString(1, usuario.getNombre());
-				st.setInt(2, usuario.getId());
-				st.setString(3, usuario.getApellido());
-				st.setString(4, usuario.getPuesto());
-				st.setString(5, usuario.getPassword());
-				
+				st.setString(2, usuario.getApellido());
+				st.setString(3, usuario.getPuesto());
+				st.setString(4, usuario.getPassword());
+				st.setInt(5, usuario.getId());
 				
 				int exec = st.executeUpdate();
 				if (exec == 0) {

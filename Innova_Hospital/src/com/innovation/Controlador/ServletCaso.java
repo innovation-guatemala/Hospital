@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.innovation.Interfaz.ServicioCaso;
 import com.innovation.daoModelo.CasoDAO;
 import com.innovation.modelo.Caso;
+import com.innovation.modelo.Paciente;
 
-
+@WebServlet("/Caso")
 public class ServletCaso extends HttpServlet {
 
 	/**
@@ -98,22 +100,14 @@ public class ServletCaso extends HttpServlet {
 			}
 			break;
 			
-		case "FND":
-			usuario = null;
-			int id_caso = Integer.parseInt(request.getParameter("id_caso"));
-			if (id_caso != 0) {
-				usuario = servicio.Buscar(id_caso);
-				
-				if(usuario != null) {
-					request.setAttribute("Caso", usuario);
-				}else {
-					mensaje = servicio.GetMensaje();
-					direccion ="Caso?accion=QRY";
-				}
+		case "SPA":
+			List<Paciente> listapaci = servicio.BuscarPaciente();
+			if (listapaci != null) {
+				request.setAttribute("listapaci", listapaci);
 			} else {
-                mensaje = "No se ha recibido el ID de Usuario.";
-                direccion = "Caso?accion=QRY";
-            }
+				mensaje = servicio.GetMensaje();
+			}
+			direccion = "creacioncaso.jsp";
 			break;
 			
 			

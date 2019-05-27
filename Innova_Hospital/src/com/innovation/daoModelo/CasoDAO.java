@@ -15,6 +15,7 @@ import java.util.List;
 import com.innovation.DAO.Conexion;
 import com.innovation.Interfaz.ServicioCaso;
 import com.innovation.modelo.Caso;
+import com.innovation.modelo.Paciente;
 
 public class CasoDAO implements ServicioCaso{
 	private final Conexion db = new Conexion();
@@ -121,27 +122,22 @@ public class CasoDAO implements ServicioCaso{
 		
 	}
 
-	public Caso Buscar(int id) {
-		Caso caso = null;
-		String sentencia = "select id_caso,id_forma_pago,id_empresa,fecha,id_paciente,descripcion,id_seguro,doc_seguro,concluido,fecha_concluido from caso where id_caso =  ?";
+	public List<Paciente> BuscarPaciente() {
+		List<Paciente> lista = null;
+		String sentencia = "select id_paciente,nombres,apellidos,dpi from paciente";
 		Connection cn = db.Conectar();
 		if (cn != null ) {
 			try {
 				PreparedStatement st = cn.prepareStatement(sentencia);
-				st.setInt(1, id);
 				ResultSet rs = st.executeQuery();
+				lista = new LinkedList<Paciente>();
 				while (rs.next()) {
-					caso = new Caso();
-					caso.setId_caso(rs.getInt(1));
-					st.setInt(1, caso.getId_forma_pago());
-					st.setInt(2, caso.getId_empresa());
-					st.setDate(3, (java.sql.Date) caso.getFecha());
-					st.setInt(5, caso.getId_paciente());
-					st.setString(6, caso.getDescripcion());
-					st.setInt(7, caso.getId_seguro());
-					st.setString(8, caso.getDoc_seguro());
-					st.setBoolean(9, caso.isConcluido());
-					st.setDate(10, (java.sql.Date) caso.getFecha_concluido());
+					Paciente paciente = new Paciente();
+					paciente.setId_paciente(rs.getInt(1));
+					paciente.setNombres(rs.getString(2));
+					paciente.setApellidos(rs.getString(3));
+					paciente.setDpi(rs.getString(4));
+					lista.add(paciente);
 				}
 				st.close();
 			} catch (SQLException e) {
@@ -156,7 +152,7 @@ public class CasoDAO implements ServicioCaso{
 		} else {
 			SetMensaje("Error de conexion: " + db.GetMessage());
 		}
-		return caso;
+		return lista;
 	}
 
 

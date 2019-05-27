@@ -61,8 +61,9 @@
 			<div class="form-group">
 				<label for="exampleFormControlSelect12">Paciente</label>								
 				<select class="form-control" id="exampleFormControlSelect12">
-				<option>Centro Medico Sanarateco</option>
-				<option>Seinsa</option>
+				<c:forEach var="n" items="${listapaci}">
+				<option>${n.nombres}</option>
+				</c:forEach>
 				</select>			
 			</div>
 			<div class="form-group">
