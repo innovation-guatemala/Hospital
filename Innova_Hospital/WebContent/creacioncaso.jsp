@@ -12,6 +12,7 @@
 		<div class="card-header card-header-border-bottom">
 			<h2>Formulario para creacion de Casos</h2>
 		</div>
+		<div>${mensaje}</div>
 		<div class="card-body">
 		<form action="Caso" method="POST" class="form-horizontal">
 		<input type="hidden" name="accion" value="INS" />

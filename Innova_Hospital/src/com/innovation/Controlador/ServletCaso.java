@@ -31,6 +31,7 @@ public class ServletCaso extends HttpServlet {
 		
 		String accion = request.getParameter("accion");
 		String mensaje = null;
+		String msjCreado = null;
 		String direccion = null;
 		
 		ServicioCaso servicio = new CasoDAO();
@@ -66,13 +67,11 @@ public class ServletCaso extends HttpServlet {
 				String dat=fecha;
 				long date=new SimpleDateFormat("dd/MM/yyyy").parse(dat,new ParsePosition(0)).getTime();
 				java.sql.Date dbDate=new java.sql.Date(date);
-				System.out.println(dbDate);
 				usuario.setFecha(dbDate);
 				
 				String dat1=fecha_concluido;
 				long date1=new SimpleDateFormat("dd/MM/yyyy").parse(dat,new ParsePosition(0)).getTime();
 				java.sql.Date dbDate1=new java.sql.Date(date1);
-				System.out.println(dbDate1);
 				usuario.setFecha(dbDate1);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -97,6 +96,7 @@ public class ServletCaso extends HttpServlet {
 				direccion ="Caso?accion=SPA";
 			} else {
 				direccion ="Caso?accion=SPA";
+				msjCreado = "Se creo correctamente el caso";
 			}
 			break;
 			
@@ -137,6 +137,7 @@ public class ServletCaso extends HttpServlet {
 					direccion ="Caso?accion=QRY";
 				} else {
 					direccion ="Caso?accion=QRY";
+					msjCreado = "Se actualizo correctamente el caso";
 				}
 				break;
 		
@@ -147,7 +148,7 @@ public class ServletCaso extends HttpServlet {
 			if (id_el != 0) {
 				servicio.Eliminar(id_el);
 				mensaje = servicio.GetMensaje();
-				
+				msjCreado = "Se elimino correctamente el caso";
 			} else {
 				mensaje = "No se obtuvo el valor a eliminar";
 				direccion ="Caso?accion=QRY";
@@ -166,6 +167,15 @@ public class ServletCaso extends HttpServlet {
 			msg += "<button class=\"close\" data-dismiss=\"alert\"><span>&times;</span></button>";
 			msg += "<strong>Alerta!!</strong><br/>";
 			msg += mensaje;
+			msg += "</div></div>";
+			request.setAttribute("mensaje", msg);
+		}
+		
+		if (msjCreado != null) {
+			String msg = "<div class=\"col-lg-6\">";
+			msg += "<label for=\"success\"></label>";
+			msg += "<div class=\"alert alert-success\" role=\"alert\">";
+			msg += msjCreado;
 			msg += "</div></div>";
 			request.setAttribute("mensaje", msg);
 		}
