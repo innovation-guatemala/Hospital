@@ -94,9 +94,9 @@ public class ServletCaso extends HttpServlet {
 				request.setAttribute("id_seguro", id_seguro);
 				request.setAttribute("doc_seguro", doc_seguro);
 				request.setAttribute("fecha_concluido", fecha_concluido);
-				direccion ="Caso?accion=QRY";
+				direccion ="Caso?accion=SPA";
 			} else {
-				direccion ="Caso?accion=QRY";
+				direccion ="Caso?accion=SPA";
 			}
 			break;
 			
@@ -104,7 +104,6 @@ public class ServletCaso extends HttpServlet {
 			List<Paciente> listapaciente = servicio.BuscarPaciente();
 			if (listapaciente != null) {
 				request.setAttribute("listapaciente", listapaciente);
-				System.out.println("listapaciente : " + listapaciente.get(1).getNombres());
 			} else {
 				mensaje = servicio.GetMensaje();
 			}

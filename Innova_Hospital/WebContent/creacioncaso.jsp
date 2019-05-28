@@ -63,8 +63,9 @@
 			<div class="form-group">
 				<label for="InputId_paciente">Paciente</label>								
 				<select class="form-control" id="InputId_paciente" name="id_paciente">
-				<option value="1">Centro Medico Sanarateco</option>
-				<option value="2">Seinsa</option>
+				<c:forEach var="n" items="${listapaciente}">
+					<option value="${n.id_paciente}">${n.nombres}</option>
+				</c:forEach>
 				</select>			
 			</div>
 			<div class="form-group">

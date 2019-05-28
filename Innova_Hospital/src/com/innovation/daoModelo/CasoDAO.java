@@ -161,6 +161,39 @@ public class CasoDAO implements ServicioCaso{
 		return lista;
 	}
 
+	
+	public List<Paciente> BuscarPaciente() {
+		List<Paciente> lista = null;
+		String sentencia = "select id_paciente, nombres, apellidos, dpi from paciente";
+		Connection cn = db.Conectar();
+		if (cn != null ) {
+			try {
+				PreparedStatement st = cn.prepareStatement(sentencia);
+				ResultSet rs = st.executeQuery();
+				lista = new LinkedList<Paciente>();
+				while (rs.next()) {
+					Paciente paci = new Paciente();
+					paci.setId_paciente(rs.getInt(1));
+					paci.setNombres(rs.getString(2));
+					paci.setApellidos(rs.getString(3));
+					paci.setDpi(rs.getString(4));
+					lista.add(paci);
+				}
+				st.close();
+			} catch (SQLException e) {
+				SetMensaje("Problema con Consultar: " + e.getMessage());
+			} finally {
+				try {
+					cn.close();
+				}catch (SQLException ex) {
+					 SetMensaje(ex.getMessage());
+				}
+			}
+		} else {
+			SetMensaje("Error de conexion: " + db.GetMessage());
+		}
+		return lista;
+	}
 
 	public void Eliminar(int id) {
 		String sentencia = "delete from caso where id_caso = ?";

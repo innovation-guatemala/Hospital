@@ -119,7 +119,7 @@
 									</a>
 										<ul class="collapse" id="nuevocaso">
 											<div class="sub-menu">
-												<li><a href="../Innova_Hospital/Caso?accion=SPA">Nuevo Cobro</a></li>
+												<li><a href="../Innova_Hospital/Caso?accion=SPA">Nuevo Caso</a></li>
 												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Nuevo Credito</a></li>
 												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Realizar abono de vale</a></li>
 												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Gastos de Hospitalización</a></li>
