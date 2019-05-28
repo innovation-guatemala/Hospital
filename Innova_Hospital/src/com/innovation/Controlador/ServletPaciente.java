@@ -45,7 +45,7 @@ public class ServletPaciente extends HttpServlet {
 			} else {
 				mensaje = servicio.GetMensaje();
 			}
-			direccion = "creacionpaciente.jsp";
+			direccion = "Paciente.jsp";
 			break;
 			
 		case "INS":
