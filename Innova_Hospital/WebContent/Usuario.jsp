@@ -98,6 +98,31 @@
 								</div>
 							</div>
 						</div>
+						
+					<!-- MODAL PARA Eliminar -->
+					 	<div class="modal fade" id="Eliminar_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<form action="Usuario" method="POST"  class="form-horizontal">
+                                     <input type="hidden" name="accion" value="DEL"/>
+									<div class="modal-body">  
+										Esta seguro de eliminar del Departamento?
+										<input type="hidden" class="form-control" id="id_usu" name="id_usu" value=""/>
+									</div>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-danger btn-pill" >Eliminar</button>
+										<button type="button" class="btn btn-primary btn-pill" data-dismiss="modal">Cancelar</button>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
 
 	</jsp:attribute>
 <jsp:attribute name="content_js">
@@ -117,6 +142,11 @@ $('#Actualizar_Modal').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('input[name="puesto"]').val(bookId4);
     $(e.currentTarget).find('input[name="password"]').val(bookId5);
     
+});
+
+$('#Eliminar_Modal').on('show.bs.modal', function(e) {
+    var bookId = $(e.relatedTarget).data('book-id');
+    $(e.currentTarget).find('input[name="id_usu"]').val(bookId);
 });
 
 

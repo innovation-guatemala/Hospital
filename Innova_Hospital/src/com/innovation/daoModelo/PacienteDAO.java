@@ -74,7 +74,7 @@ public class PacienteDAO implements ServicioPaciente {
 	}
 
 	public void Insertar(Paciente paciente) {
-		String sentencia = "Insert into paciente (nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,fecha_creacion) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sentencia = "Insert into paciente (nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,fecha_creacion,no_expediente) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection cn = db.Conectar();
 		if (cn != null) {
 			try {

@@ -84,39 +84,6 @@ public class UsuarioDAO implements ServicioUsuario {
 		
 	}
 
-	@Override
-	public Usuario Buscar(int id) {
-		Usuario usuario = null;
-		String sentencia = "select id_acceso, nombre,apellido,puesto from login where id_acceso =  ?";
-		Connection cn = db.Conectar();
-		if (cn != null ) {
-			try {
-				PreparedStatement st = cn.prepareStatement(sentencia);
-				st.setInt(1, id);
-				ResultSet rs = st.executeQuery();
-				while (rs.next()) {
-					usuario = new Usuario();
-					usuario.setId(rs.getInt(1));
-					usuario.setNombre(rs.getString(2));
-					usuario.setApellido(rs.getString(3));
-					usuario.setPuesto(rs.getString(4));
-					usuario.setPassword(rs.getString(5));
-				}
-				st.close();
-			} catch (SQLException e) {
-				SetMensaje("Problema con Consultar: " + e.getMessage());
-			} finally {
-				try {
-					cn.close();
-				}catch (SQLException ex) {
-					 SetMensaje(ex.getMessage());
-				}
-			}
-		} else {
-			SetMensaje("Error de conexion: " + db.GetMessage());
-		}
-		return usuario;
-	}
 
 	@Override
 	public void Actualizar(Usuario usuario) {

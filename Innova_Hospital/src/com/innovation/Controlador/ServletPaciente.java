@@ -31,6 +31,7 @@ public class ServletPaciente extends HttpServlet {
 		
 		String accion = request.getParameter("accion");
 		String mensaje = null;
+		String msjcorrecto = null;
 		String direccion = null;
 		
 		ServicioPaciente servicio = new PacienteDAO();
@@ -68,6 +69,7 @@ public class ServletPaciente extends HttpServlet {
 			String nombre_factura = request.getParameter("nombre_factura");
 			String direccion_factura = request.getParameter("direccion_factura");
 			String ubicacion = request.getParameter("ubicacion");
+			String expediente = request.getParameter("No_expediente");
 			usuario.setNombres(nombre);
 			usuario.setApellidos(apellido);
 			usuario.setDpi(dpi);
@@ -99,32 +101,15 @@ public class ServletPaciente extends HttpServlet {
 			usuario.setNombre_factura(nombre_factura);
 			usuario.setDireccion_factura(direccion_factura);
 			usuario.setUbicacion(ubicacion);
+			usuario.setNo_expediente(expediente);
 			
 			servicio.Insertar(usuario);
 			mensaje = servicio.GetMensaje();
 			if (mensaje != null) {
-				request.setAttribute("nombres",nombre);
-				request.setAttribute("apellidos",apellido);
-				request.setAttribute("dpi", dpi);
-				request.setAttribute("fecha_nacimiento", fecha_nacimiento);
-				request.setAttribute("sexo", sexo);
-				request.setAttribute("alergias", alergias);
-				request.setAttribute("antecedentes_personales", antecedentes_personales);
-				request.setAttribute("antecedentes_familiares", antecedentes_familiares);
-				request.setAttribute("anotaciones_importantes", anotaciones_importantes);
-				request.setAttribute("padre", padre);
-				request.setAttribute("madre", madre);
-				request.setAttribute("encargado", encargado);
-				request.setAttribute("direccion", direccion1);
-				request.setAttribute("dpi_encargado", dpi_encargado);
-				request.setAttribute("telefono", telefono);
-				request.setAttribute("nit", nit);
-				request.setAttribute("nombre_factura", nombre_factura);
-				request.setAttribute("direccion_factura", direccion_factura);
-				request.setAttribute("ubicacion", ubicacion);
-				direccion ="Paciente?accion=QRY";
+				direccion ="creacionpaciente.jsp";
 			} else {
-				direccion ="Paciente?accion=QRY";
+				direccion ="creacionpaciente.jsp";
+				msjcorrecto = "Paciente Creado exitosamente";
 			}
 			break;
 			
@@ -212,6 +197,15 @@ public class ServletPaciente extends HttpServlet {
 			msg += "<button class=\"close\" data-dismiss=\"alert\"><span>&times;</span></button>";
 			msg += "<strong>Alerta!!</strong><br/>";
 			msg += mensaje;
+			msg += "</div></div>";
+			request.setAttribute("mensaje", msg);
+		}
+		
+		if (msjcorrecto != null) {
+			String msg = "<div class=\"col-lg-6\">";
+			msg += "<label for=\"success\"></label>";
+			msg += "<div class=\"alert alert-success\" role=\"alert\">";
+			msg += msjcorrecto;
 			msg += "</div></div>";
 			request.setAttribute("mensaje", msg);
 		}

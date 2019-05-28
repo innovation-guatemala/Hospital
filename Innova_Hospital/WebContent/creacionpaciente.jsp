@@ -12,6 +12,7 @@
 		<div class="card-header card-header-border-bottom">
 			<h2>Formulario para creacion de Pacientes</h2>
 		</div>
+		<div>${mensaje}</div>
 		<div class="card-body">
 		<form action="Paciente" method="POST" class="form-horizontal">
 		<input type="hidden" name="accion" value="INS" />
@@ -71,18 +72,12 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="InputSexo">Sexo del paciente</label>
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text">
-							<i class="mdi mdi-account-arrow-right-outline"></i>
-						</span>
-					</div>
-				
-				<input type="text" class="form-control" id="InputSexo" name="sexo"
-									value="${usuario.sexo}" placeholder="Sexo del paciente">
-				</div>
-			</div>
+				<label for="InputId_empresa">Sexo Del Paciente</label>								
+				<select class="form-control" id="InputId_empresa" name="id_empresa">
+				<option value="M">Masculino</option>
+				<option value="F">Femenino</option>
+				</select>
+			</div>	
 			<div class="form-group">
 				<label for="InputAlergias">Alergias del paciente</label>
 				<div class="input-group">
@@ -281,7 +276,21 @@
 									name="ubicacion" value="${usuario.ubicacion}"
 									placeholder="Ubicacion para la factura paciente">
 				</div>
-			</div>																																																									
+			</div>
+			<div class="form-group">
+				<label for="InputUbicacion">Numero de Expediente</label>
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">
+							<i class="mdi mdi-file"></i>
+						</span>
+					</div>
+				
+				<input type="text" class="form-control" id="No_expediente"
+									name="No_expediente" value="${usuario.no_expediente}"
+									placeholder="No. Expediente del paciente">
+				</div>
+			</div>																																																										
 				   <button type="submit" class="btn btn-primary">Crear</button>
 				   <button type="button" class="btn btn-danger btn-pill">Cancelar</button>
 		     

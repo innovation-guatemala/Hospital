@@ -65,24 +65,6 @@ public class ServletUsuario extends HttpServlet {
 			}
 			break;
 			
-		/*case "FND":
-			usuario = null;
-			int id_depto = Integer.parseInt(request.getParameter("id_acceso"));
-			if (id_depto != 0) {
-				usuario = servicio.Buscar(id_depto);
-				
-				if(usuario != null) {
-					request.setAttribute("usuario", usuario);
-				}else {
-					mensaje = servicio.GetMensaje();
-					direccion ="Usuario?accion=QRY";
-				}
-			} else {
-                mensaje = "No se ha recibido el ID de Usuario.";
-                direccion = "Usuario?accion=QRY";
-            }
-			break;*/
-			
 			
 		case "ACT":
 			 Usuario usuarioact = new Usuario();
@@ -103,19 +85,20 @@ public class ServletUsuario extends HttpServlet {
 			break;
 		
 				
-		/*case "DEL":
-			int id_el = Integer.parseInt(request.getParameter("id_acceso"));
+		case "DEL":
+			int id_el = Integer.parseInt(request.getParameter("id_usu"));
 			
 			if (id_el != 0) {
 				servicio.Eliminar(id_el);
 				mensaje = servicio.GetMensaje();
+				msjCreado = "Usuario Eliminado exitosamente!!!";
 				
 			} else {
-				mensaje = "No se obtuvo el valor a eliminar";
 				direccion ="Usuario?accion=QRY";
 			}
 			direccion ="Usuario?accion=QRY";
-			break;*/
+			break;
+			
 			
 		case "VLD":
 			String user = request.getParameter("nombre");
