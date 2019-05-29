@@ -98,6 +98,7 @@ public class PacienteDAO implements ServicioPaciente {
 				st.setString(17, paciente.getNombre_factura());
 				st.setString(18, paciente.getDireccion_factura());
 				st.setString(19, paciente.getUbicacion());
+				st.setString(21, paciente.getNo_expediente());
 
 				//calendario para fecha creacion
 				Calendar fecha = new GregorianCalendar();

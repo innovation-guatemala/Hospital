@@ -73,7 +73,7 @@
 			</div>
 			<div class="form-group">
 				<label for="InputId_empresa">Sexo Del Paciente</label>								
-				<select class="form-control" id="InputId_empresa" name="id_empresa">
+				<select class="form-control" id="sexo" name="sexo">
 				<option value="M">Masculino</option>
 				<option value="F">Femenino</option>
 				</select>

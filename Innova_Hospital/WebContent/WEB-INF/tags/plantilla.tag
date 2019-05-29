@@ -136,9 +136,16 @@
 						</a>
 							<ul class="collapse" id="paciente" data-parent="#sidebar-menu">
 								<div class="sub-menu">
-									<li><a class="sidenav-item-link" href="../Innova_Hospital/creacionpaciente.jsp"> <span
-											class="nav-text">Nuevo Paciente</span>
-									</a></li>
+									<li><a class="sidenav-item-link" data-toggle="collapse"
+										data-target="#nuevopaciente" aria-expanded="false"
+										aria-controls="nuevopaciente"> <span class="nav-text">Pacientes </span><b class="caret"></b>
+									</a>
+										<ul class="collapse" id="nuevopaciente">
+											<div class="sub-menu">
+												<li><a href="../Innova_Hospital/creacionpaciente.jsp">Crear Paciente</a></li>
+												<li><a href="../Innova_Hospital/Paciente?accion=QRY">Ver Paciente</a></li>
+											</div>
+										</ul></li>
 									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
 											class="nav-text">Nueva Cita</span>
 									</a></li>
