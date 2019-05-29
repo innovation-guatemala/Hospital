@@ -205,26 +205,18 @@
 					                <div class="input-group-prepend">
 						                <span class="input-group-text"><i class="mdi mdi-office-building"></i></span>
 					                </div>
-				
-				<input type="text" class="form-control" id="InputDireccion"
-										name="direccion" value="${usuario.direccion}"
-										placeholder="Dirreccion del paciente">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="InputDpiEncargado">Numero de DPI del encargado</label>
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text">
-							<i class="mdi mdi-account-card-details"></i>
-						</span>
-					</div>
-				
-				<input type="text" class="form-control" id="InputDpiEncargado"
-										name="dpi_encargado" value="${usuario.dpi_encargado}"
-										placeholder="Numero de DPI del encargado">
-				</div>
-			</div>	
+ 				                        <input type="text" class="form-control" id="InputDireccion"	name="direccion" value="${usuario.direccion}" placeholder="Dirreccion del paciente">
+				                    </div>
+			                        </div>
+			                        <div class="form-group">
+				                        <label for="InputDpiEncargado">Numero de DPI del encargado</label>
+				                    <div class="input-group">
+					                <div class="input-group-prepend">
+						                <span class="input-group-text"><i class="mdi mdi-account-card-details"></i></span>
+					                </div>
+				                        <input type="text" class="form-control" id="InputDpiEncargado" name="dpi_encargado" value="${usuario.dpi_encargado}" placeholder="Numero de DPI del encargado">
+				                   </div>
+			                       </div>	
 			<div class="form-group">
 				<label for="InputTelefono">Numero de telefono del paciente</label>
 				<div class="input-group">
