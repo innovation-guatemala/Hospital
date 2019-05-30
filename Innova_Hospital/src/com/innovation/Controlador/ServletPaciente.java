@@ -113,61 +113,33 @@ public class ServletPaciente extends HttpServlet {
 			}
 			break;
 			
-		case "FND":
-			usuario = null;
-			int id_paciente = Integer.parseInt(request.getParameter("id_paciente"));
-			if (id_paciente != 0) {
-				usuario = servicio.Buscar(id_paciente);
-				
-				if(usuario != null) {
-					request.setAttribute("Paciente", usuario);
-				}else {
-					mensaje = servicio.GetMensaje();
-					direccion ="Paciente?accion=QRY";
-				}
-			} else {
-                mensaje = "No se ha recibido el ID de Usuario.";
-                direccion = "Paciente?accion=QRY";
-            }
-			break;
-			
 			
 		case "UPD":
-			 usuario = new Paciente();
-			 usuario.setId_paciente(Integer.parseInt(request.getParameter("id_paciente")));
-			 usuario.setNombres(request.getParameter("nombres"));
-			 usuario.setApellidos(request.getParameter("apellidos"));
-			 usuario.setDpi(request.getParameter("dpi"));
-				SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd");
-				try {
-					Date parsed1 = (Date) format1.parse("fecha_nacimiento");
-					usuario.setFecha_nacimiento(new java.sql.Date(parsed1.getTime()));
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			 usuario.setSexo(request.getParameter("sexo"));
-			 usuario.setAlergias(request.getParameter("alergias"));
-			 usuario.setAntecedentes_personales(request.getParameter("antecedentes_personales"));
-			 usuario.setAntecedentes_familiares(request.getParameter("antecendentes_familiares"));
-			 usuario.setAnotaciones_importantes(request.getParameter("anotaciones_importantes"));
-			 usuario.setPadre(request.getParameter("padre"));
-			 usuario.setMadre(request.getParameter("madre"));
-			 usuario.setEncargado(request.getParameter("encargado"));
-			 usuario.setDireccion(request.getParameter("direccion"));
-			 usuario.setDpi_encargado(request.getParameter("dpi_encargado"));
-			 usuario.setTelefono(request.getParameter("telefono"));
-			 usuario.setNit(request.getParameter("nit"));
-			 usuario.setNombre_factura(request.getParameter("nombre_factura"));
-			 usuario.setDireccion_factura(request.getParameter("direccion_factura"));
-			 usuario.setUbicacion(request.getParameter("ubicacion"));
-			 servicio.Actualizar(usuario);
+			 Paciente paci = new Paciente();
+			 paci.setId_paciente(Integer.parseInt(request.getParameter("id_paci")));
+			 paci.setNombres(request.getParameter("nombres"));
+			 paci.setApellidos(request.getParameter("apellidos"));
+			 paci.setAlergias(request.getParameter("alergias")); 
+			 paci.setAntecedentes_personales(request.getParameter("ant_per"));
+			 paci.setAntecedentes_familiares(request.getParameter("ant_fam"));
+			 paci.setAnotaciones_importantes(request.getParameter("ano_imp"));
+			 paci.setEncargado(request.getParameter("encargado"));
+			 paci.setDireccion(request.getParameter("dir"));
+			 paci.setDpi_encargado(request.getParameter("dpi_enc"));
+			 paci.setTelefono(request.getParameter("tel"));
+			 paci.setNit(request.getParameter("nit"));
+			 paci.setNombre_factura(request.getParameter("nom_fac"));
+			 paci.setDireccion_factura(request.getParameter("dir_fac"));
+			 paci.setUbicacion(request.getParameter("ubi"));
+			 paci.setNo_expediente(request.getParameter("no_ex"));
+			 servicio.Actualizar(paci);
 			 mensaje = servicio.GetMensaje();
 				if (mensaje != null) {
-					request.setAttribute("Usuario",usuario);
+					request.setAttribute("Paciente",paci);
 					direccion ="Paciente?accion=QRY";
 				} else {
 					direccion ="Paciente?accion=QRY";
+					msjcorrecto = "Paciente Modificado exitosamente";
 				}
 				break;
 		

@@ -11,8 +11,6 @@ public interface ServicioPaciente {
 	
 	public void Insertar(Paciente usuario);
 	
-	public Paciente Buscar(int id);
-	
 	public void Actualizar(Paciente usuario);
 	
 	public void Eliminar(int id);

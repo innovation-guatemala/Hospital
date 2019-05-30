@@ -42,13 +42,15 @@
 														<td>${n.fecha_nacimiento}</td>
 														<td>${n.telefono}</td>
 														<td>${n.no_expediente}</td>
-														<td style="text-align: center"><a href="#ActPaci" data-toggle="modal" class="mb-1 btn btn-sm btn-info"
-													data-book-id="${n.id_paciente}"
-													data-book-id2="${n.nombres}" data-book-id3="${n.apellidos}"
-													data-book-id4="${n.dpi}"
-													data-book-id5="${n.fecha_nacimiento}"
-													data-book-id6="${n.telefono}"
-													data-book-id6="${n.no_expediente}">
+														<td style="text-align: center">
+														<input id="alergiasin" name="alergiasin" type="hidden" value="${n.alergias}">
+														<a href="#ActPaci" onClick="copiarDatos()" data-toggle="modal" class="mb-1 btn btn-sm btn-info"
+													data-book-id="${n.id_paciente}" data-book-id2="${n.nombres}" data-book-id3="${n.apellidos}"
+													data-book-id4="${n.alergias}" data-book-id5="${n.antecedentes_personales}" data-book-id6="${n.antecedentes_familiares}"
+													data-book-id7="${n.anotaciones_importantes}" data-book-id8="${n.encargado}" data-book-id9="${n.direccion}"
+													data-book-id10="${n.dpi_encargado}" data-book-id11="${n.telefono}" data-book-id12="${n.nit}"
+													data-book-id13="${n.nombre_factura}" data-book-id14="${n.direccion_factura}" 
+													data-book-id15="${n.ubicacion}" data-book-id16="${n.no_expediente}">
                                                 	<span class="mdi mdi-update"> Actualizar</span>
 												</a></td>
                                                 		
@@ -83,53 +85,56 @@
 									</div>
 									<div class="modal-body">
 										<form action="Paciente" method="POST" class="form-horizontal">
-                                    			<input type="hidden" name="accion" value="ACT" />  
+                                    			<input type="hidden" name="accion" value="UPD" />  
 										<div class="form-group">
 												<label for="InputId">Id Paciente</label>
 												<input type="text" class="form-control" id="id_paci" name="id_paci" value=""
-												 readonly=""/>
+												 readonly=""/><br>
 												<label for="InputNombre">Nombres</label>
 												<input type="text" class="form-control" id="nombres" name="nombres" value=""
-												 placeholder="Modificar Nombres"/>
+												 placeholder="Modificar Nombres"/><br>
 												 <label for="InputApellido">Apellidos</label>
 												<input type="text" class="form-control" id="apellidos" name="apellidos" value=""
-												 placeholder="Modificar Apellidos"/>
-												 <label for="InputPuesto">DPI</label>
-												<input type="text" class="form-control" id="dpi" name="dpi" value=""
-												 placeholder="Modificar DPI"/>
-												 <label for="InputPuesto">Fecha nacimiento</label>
-												<input type="text" class="form-control" id="fec_nac" name="fec_nac" value=""
-												 placeholder="Modificar Fecha nacimiento"/>
-												 <label for="InputPuesto">alergias</label>
-												<input type="text" class="form-control" id="alergias" name="alergias" value=""
-												 placeholder="Modificar Fecha nacimiento"/>
-												 <label for="InputPuesto">Antecedentes Personales</label>
+												 placeholder="Modificar Apellidos"/><br>
+												 <label for="InputAlergia">alergias</label>
+												<textarea class="form-control" id="alergias" name="alergias" rows="3" maxlength="100">
+												</textarea><br>
+												 <label for="InputAntPer">Antecedentes Personales</label>
 												<input type="text" class="form-control" id="ant_per" name="ant_per" value=""
-												 placeholder="Modificar Antecendentes Personales"/>
-												 <label for="InputPuesto">Antecedentes Familiares</label>
+												 placeholder="Modificar Antecendentes Personales"/><br>
+												 <label for="InputAntPer">Antecedentes Familiares</label>
 												<input type="text" class="form-control" id="ant_fam" name="ant_fam" value=""
-												 placeholder="Modificar Antecendetes Familiares"/>
-												 <label for="InputPuesto">Anotaciones Importantes</label>
+												 placeholder="Modificar Antecendetes Familiares"/><br>
+												 <label for="InputAnotaciones">Anotaciones Importantes</label>
 												<input type="text" class="form-control" id="ano_imp" name="ano_imp" value=""
-												 placeholder="Modificar Anotaciones Importantes"/>
-												 <label for="InputPuesto">Encargado</label>
+												 placeholder="Modificar Anotaciones Importantes"/><br>
+												 <label for="InputEncargado">Encargado</label>
 												<input type="text" class="form-control" id="encargado" name="encargado" value=""
-												 placeholder="Modificar Encargado"/>
-												 <label for="InputPuesto">Direccion</label>
+												 placeholder="Modificar Encargado"/><br>
+												 <label for="InputDir">Direccion</label>
 												<input type="text" class="form-control" id="dir" name="dir" value=""
-												 placeholder="Modificar Direccion"/>
-												 <label for="InputPuesto">DPI Encargado</label>
+												 placeholder="Modificar Direccion"/><br>
+												 <label for="InputDPIEnc">DPI Encargado</label>
 												<input type="text" class="form-control" id="dpi_enc" name="dpi_enc" value=""
-												 placeholder="Modificar el DPI del Encargado"/>
-												 <label for="InputPuesto">telefono</label>
+												 placeholder="Modificar el DPI del Encargado"/><br>
+												 <label for="InputTelefono">telefono</label>
 												<input type="text" class="form-control" id="tel" name="tel" value=""
-												 placeholder="Modificar Telefono"/>
-												 <label for="InputPuesto">NIT</label>
+												 placeholder="Modificar Telefono"/><br>
+												 <label for="InputNIT">NIT</label>
 												<input type="text" class="form-control" id="nit" name="nit" value=""
-												 placeholder="Modificar NIT"/>
-												 <label for="InputPuesto">Nombre Factura</label>
+												 placeholder="Modificar NIT"/><br>
+												 <label for="InputNomFac">Nombre Factura</label>
 												<input type="text" class="form-control" id="nom_fac" name="nom_fac" value=""
-												 placeholder="Modificar Nombre de la Factura"/>
+												 placeholder="Modificar Nombre de la Factura"/><br>
+												 <label for="InputDirFact">Direccion Factura</label>
+												<input type="text" class="form-control" id="dir_fac" name="dir_fac" value=""
+												 placeholder="Modificar Direccion de la Factura"/><br>
+												 <label for="InputUbicacion">Ubicacion</label>
+												<input type="text" class="form-control" id="ubi" name="ubi" value=""
+												 placeholder="Modificar Ubicacion"/><br>
+												 <label for="InputExpediente">No. Expediente</label>
+												<input type="text" class="form-control" id="no_ex" name="no_ex" value=""
+												 placeholder="Modificar el numero de expediente"/>
 											</div>
 											<button type="submit" class="btn btn-primary">Actualizar</button>
 											<button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Cancelar</button>
@@ -148,33 +153,74 @@
 			type="text/javascript"></script>
         
 <script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							$('#table_id')
-									.dataTable(
-											{
-												"lengthMenu" : [ 7, 10, 25, 50,
-														75, 100 ],
-												"language" : {
-													"lengthMenu" : 'Mostrar <select>'
-															+ '<option value="7">7</option>'
-															+ '<option value="10">10</option>'
-															+ '<option value="25">25</option>'
-															+ '<option value="50">50</option>'
-															+ '<option value="75">75</option>'
-															+ '<option value="100">100</option>'
-															+ '<option value="-1">Todo</option>'
-															+ '</select>',
-													"search" : "Buscar:",
-													"info" : "Mostrando pagina _PAGE_ de _PAGES_",
-													"paginate" : {
-														"previous" : "Atras",
-														"next" : "Adelante"
-													}
-												}
-											});
-						});
+
+$('#ActPaci').on('show.bs.modal', function(e) {
+    var bookId = $(e.relatedTarget).data('book-id');
+    var bookId2 = $(e.relatedTarget).data('book-id2');
+    var bookId3 = $(e.relatedTarget).data('book-id3');
+    //var bookId4 = $(e.relatedTarget).data('book-id4');
+    var bookId5 = $(e.relatedTarget).data('book-id5');
+    var bookId6 = $(e.relatedTarget).data('book-id6');
+    var bookId7 = $(e.relatedTarget).data('book-id7');
+    var bookId8 = $(e.relatedTarget).data('book-id8');
+    var bookId9 = $(e.relatedTarget).data('book-id9');
+    var bookId10 = $(e.relatedTarget).data('book-id10');
+    var bookId11 = $(e.relatedTarget).data('book-id11');
+    var bookId12 = $(e.relatedTarget).data('book-id12');
+    var bookId13 = $(e.relatedTarget).data('book-id13');
+    var bookId14 = $(e.relatedTarget).data('book-id14');
+    var bookId15 = $(e.relatedTarget).data('book-id15');
+    var bookId16 = $(e.relatedTarget).data('book-id16');
+    $(e.currentTarget).find('input[name="id_paci"]').val(bookId);
+    $(e.currentTarget).find('input[name="nombres"]').val(bookId2);
+    $(e.currentTarget).find('input[name="apellidos"]').val(bookId3);
+    //$(e.currentTarget).find('input[name="alergias"]').val(bookId4);
+    $(e.currentTarget).find('input[name="ant_per"]').val(bookId5);
+    $(e.currentTarget).find('input[name="ant_fam"]').val(bookId6);
+    $(e.currentTarget).find('input[name="ano_imp"]').val(bookId7);
+    $(e.currentTarget).find('input[name="encargado"]').val(bookId8);
+    $(e.currentTarget).find('input[name="dir"]').val(bookId9);
+    $(e.currentTarget).find('input[name="dpi_enc"]').val(bookId10);
+    $(e.currentTarget).find('input[name="tel"]').val(bookId11);
+    $(e.currentTarget).find('input[name="nit"]').val(bookId12);
+    $(e.currentTarget).find('input[name="nom_fac"]').val(bookId13);
+    $(e.currentTarget).find('input[name="dir_fac"]').val(bookId14);
+    $(e.currentTarget).find('input[name="ubi"]').val(bookId15);
+    $(e.currentTarget).find('input[name="no_ex"]').val(bookId16);
+    
+});
+
+function copiarDatos(){
+
+	  var bookId4 = document.getElementById("alergiasin").value;
+	  
+	  document.getElementById("alergias").innerHTML = bookId4;
+
+	}
+
+
+$(document).ready(function() {
+	$('#table_id').dataTable( {
+		"lengthMenu" : [ 7, 10, 25, 50, 75, 100 ],
+		"language" : {
+			"lengthMenu" : 'Mostrar <select>'
+					+ '<option value="7">7</option>'
+					+ '<option value="10">10</option>'
+					+ '<option value="25">25</option>'
+					+ '<option value="50">50</option>'
+					+ '<option value="75">75</option>'
+					+ '<option value="100">100</option>'
+					+ '<option value="-1">Todo</option>'
+					+ '</select>',
+			"search" : "Buscar:",
+			"info" : "Mostrando pagina _PAGE_ de _PAGES_",
+			"paginate" : {
+				"previous" : "Atras",
+				"next" : "Adelante"
+			}
+		}
+	});
+});
 
 
 </script>
