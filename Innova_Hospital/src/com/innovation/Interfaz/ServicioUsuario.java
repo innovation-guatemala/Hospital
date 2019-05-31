@@ -11,8 +11,6 @@ public interface ServicioUsuario {
 	
 	public void Insertar(Usuario usuario);
 	
-	public Usuario Buscar(int id);
-	
 	public void Actualizar(Usuario usuario);
 	
 	public void Eliminar(int id);

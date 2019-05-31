@@ -24,6 +24,7 @@ public class Paciente {
 	private String nombre_factura;
 	private String direccion_factura;
 	private String ubicacion;
+	private String no_expediente;
 	
 	public int getId_paciente() {
 		return id_paciente;
@@ -145,6 +146,13 @@ public class Paciente {
 	}
 	public void setDireccion_factura(String direccion_factura) {
 		this.direccion_factura = direccion_factura;
+	}
+	
+	public String getNo_expediente() {
+		return no_expediente;
+	}
+	public void setNo_expediente(String no_expediente) {
+		this.no_expediente = no_expediente;
 	}
 	
 }

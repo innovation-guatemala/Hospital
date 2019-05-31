@@ -1,6 +1,7 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
 <%@ attribute name="tittle" required="true" rtexprvalue="true"%>
 <%@ attribute name="content" fragment="true"%>
+<%@ attribute name="content_js" fragment="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -42,11 +43,12 @@
 <link id="sleek-css" rel="stylesheet"
 	href="Resources/assets/css/sleek.css" />
 
-
+<!-- TABLA -->
+<link href="Resources/assets/datatable/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href="Resources/assets/datatable/dataTables.jqueryui.min.css" rel="stylesheet" type="text/css"/>
 
 <!-- FAVICON -->
 <link href="Resources/assets/img/favicon.png" rel="shortcut icon" />
-
 
 
 <!--
@@ -117,7 +119,7 @@
 									</a>
 										<ul class="collapse" id="nuevocaso">
 											<div class="sub-menu">
-												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Nuevo Cobro</a></li>
+												<li><a href="../Innova_Hospital/Caso?accion=SPA">Nuevo Caso</a></li>
 												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Nuevo Credito</a></li>
 												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Realizar abono de vale</a></li>
 												<li><a href="../Innova_Hospital/fueradeservicio.jsp">Gastos de Hospitalización</a></li>
@@ -134,9 +136,16 @@
 						</a>
 							<ul class="collapse" id="paciente" data-parent="#sidebar-menu">
 								<div class="sub-menu">
-									<li><a class="sidenav-item-link" href="../Innova_Hospital/creacionpaciente.jsp"> <span
-											class="nav-text">Nuevo Paciente</span>
-									</a></li>
+									<li><a class="sidenav-item-link" data-toggle="collapse"
+										data-target="#nuevopaciente" aria-expanded="false"
+										aria-controls="nuevopaciente"> <span class="nav-text">Pacientes </span><b class="caret"></b>
+									</a>
+										<ul class="collapse" id="nuevopaciente">
+											<div class="sub-menu">
+												<li><a href="../Innova_Hospital/creacionpaciente.jsp">Crear Paciente</a></li>
+												<li><a href="../Innova_Hospital/Paciente?accion=QRY">Ver Paciente</a></li>
+											</div>
+										</ul></li>
 									<li><a class="sidenav-item-link" href="../Innova_Hospital/fueradeservicio.jsp"> <span
 											class="nav-text">Nueva Cita</span>
 									</a></li>
@@ -345,6 +354,7 @@
 	<script src="Resources/assets/js/custom.js"></script>
 	<script src="Resources/assets/js/jquery.js"></script>
 
+<jsp:invoke fragment="content_js"></jsp:invoke>
 
 </body>
 </html>

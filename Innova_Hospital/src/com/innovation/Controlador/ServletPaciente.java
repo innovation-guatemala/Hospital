@@ -31,6 +31,7 @@ public class ServletPaciente extends HttpServlet {
 		
 		String accion = request.getParameter("accion");
 		String mensaje = null;
+		String msjcorrecto = null;
 		String direccion = null;
 		
 		ServicioPaciente servicio = new PacienteDAO();
@@ -44,7 +45,7 @@ public class ServletPaciente extends HttpServlet {
 			} else {
 				mensaje = servicio.GetMensaje();
 			}
-			direccion = "creacionpaciente.jsp";
+			direccion = "Paciente.jsp";
 			break;
 			
 		case "INS":
@@ -68,6 +69,7 @@ public class ServletPaciente extends HttpServlet {
 			String nombre_factura = request.getParameter("nombre_factura");
 			String direccion_factura = request.getParameter("direccion_factura");
 			String ubicacion = request.getParameter("ubicacion");
+			String expediente = request.getParameter("No_expediente");
 			usuario.setNombres(nombre);
 			usuario.setApellidos(apellido);
 			usuario.setDpi(dpi);
@@ -99,100 +101,56 @@ public class ServletPaciente extends HttpServlet {
 			usuario.setNombre_factura(nombre_factura);
 			usuario.setDireccion_factura(direccion_factura);
 			usuario.setUbicacion(ubicacion);
+			usuario.setNo_expediente(expediente);
 			
 			servicio.Insertar(usuario);
 			mensaje = servicio.GetMensaje();
 			if (mensaje != null) {
-				request.setAttribute("nombres",nombre);
-				request.setAttribute("apellidos",apellido);
-				request.setAttribute("dpi", dpi);
-				request.setAttribute("fecha_nacimiento", fecha_nacimiento);
-				request.setAttribute("sexo", sexo);
-				request.setAttribute("alergias", alergias);
-				request.setAttribute("antecedentes_personales", antecedentes_personales);
-				request.setAttribute("antecedentes_familiares", antecedentes_familiares);
-				request.setAttribute("anotaciones_importantes", anotaciones_importantes);
-				request.setAttribute("padre", padre);
-				request.setAttribute("madre", madre);
-				request.setAttribute("encargado", encargado);
-				request.setAttribute("direccion", direccion1);
-				request.setAttribute("dpi_encargado", dpi_encargado);
-				request.setAttribute("telefono", telefono);
-				request.setAttribute("nit", nit);
-				request.setAttribute("nombre_factura", nombre_factura);
-				request.setAttribute("direccion_factura", direccion_factura);
-				request.setAttribute("ubicacion", ubicacion);
-				direccion ="Paciente?accion=QRY";
+				direccion ="creacionpaciente.jsp";
 			} else {
-				direccion ="Paciente?accion=QRY";
+				direccion ="creacionpaciente.jsp";
+				msjcorrecto = "Paciente Creado exitosamente";
 			}
-			break;
-			
-		case "FND":
-			usuario = null;
-			int id_paciente = Integer.parseInt(request.getParameter("id_paciente"));
-			if (id_paciente != 0) {
-				usuario = servicio.Buscar(id_paciente);
-				
-				if(usuario != null) {
-					request.setAttribute("Paciente", usuario);
-				}else {
-					mensaje = servicio.GetMensaje();
-					direccion ="Paciente?accion=QRY";
-				}
-			} else {
-                mensaje = "No se ha recibido el ID de Usuario.";
-                direccion = "Paciente?accion=QRY";
-            }
 			break;
 			
 			
 		case "UPD":
-			 usuario = new Paciente();
-			 usuario.setId_paciente(Integer.parseInt(request.getParameter("id_paciente")));
-			 usuario.setNombres(request.getParameter("nombres"));
-			 usuario.setApellidos(request.getParameter("apellidos"));
-			 usuario.setDpi(request.getParameter("dpi"));
-				SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd");
-				try {
-					Date parsed1 = (Date) format1.parse("fecha_nacimiento");
-					usuario.setFecha_nacimiento(new java.sql.Date(parsed1.getTime()));
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			 usuario.setSexo(request.getParameter("sexo"));
-			 usuario.setAlergias(request.getParameter("alergias"));
-			 usuario.setAntecedentes_personales(request.getParameter("antecedentes_personales"));
-			 usuario.setAntecedentes_familiares(request.getParameter("antecendentes_familiares"));
-			 usuario.setAnotaciones_importantes(request.getParameter("anotaciones_importantes"));
-			 usuario.setPadre(request.getParameter("padre"));
-			 usuario.setMadre(request.getParameter("madre"));
-			 usuario.setEncargado(request.getParameter("encargado"));
-			 usuario.setDireccion(request.getParameter("direccion"));
-			 usuario.setDpi_encargado(request.getParameter("dpi_encargado"));
-			 usuario.setTelefono(request.getParameter("telefono"));
-			 usuario.setNit(request.getParameter("nit"));
-			 usuario.setNombre_factura(request.getParameter("nombre_factura"));
-			 usuario.setDireccion_factura(request.getParameter("direccion_factura"));
-			 usuario.setUbicacion(request.getParameter("ubicacion"));
-			 servicio.Actualizar(usuario);
+			 Paciente paci = new Paciente();
+			 paci.setId_paciente(Integer.parseInt(request.getParameter("id_paci")));
+			 paci.setNombres(request.getParameter("nombres"));
+			 paci.setApellidos(request.getParameter("apellidos"));
+			 paci.setAlergias(request.getParameter("alergias")); 
+			 paci.setAntecedentes_personales(request.getParameter("ant_per"));
+			 paci.setAntecedentes_familiares(request.getParameter("ant_fam"));
+			 paci.setAnotaciones_importantes(request.getParameter("ano_imp"));
+			 paci.setEncargado(request.getParameter("encargado"));
+			 paci.setDireccion(request.getParameter("dir"));
+			 paci.setDpi_encargado(request.getParameter("dpi_enc"));
+			 paci.setTelefono(request.getParameter("tel"));
+			 paci.setNit(request.getParameter("nit"));
+			 paci.setNombre_factura(request.getParameter("nom_fac"));
+			 paci.setDireccion_factura(request.getParameter("dir_fac"));
+			 paci.setUbicacion(request.getParameter("ubi"));
+			 paci.setNo_expediente(request.getParameter("no_ex"));
+			 servicio.Actualizar(paci);
 			 mensaje = servicio.GetMensaje();
 				if (mensaje != null) {
-					request.setAttribute("Usuario",usuario);
+					request.setAttribute("Paciente",paci);
 					direccion ="Paciente?accion=QRY";
 				} else {
 					direccion ="Paciente?accion=QRY";
+					msjcorrecto = "Paciente Modificado exitosamente";
 				}
 				break;
 		
 				
 		case "DEL":
-			int id_el = Integer.parseInt(request.getParameter("id_acceso"));
+			int id_el = Integer.parseInt(request.getParameter("id_paci"));
 			
 			if (id_el != 0) {
 				servicio.Eliminar(id_el);
 				mensaje = servicio.GetMensaje();
+				msjcorrecto = "Paciente Eliminado exitosamente";
 				
 			} else {
 				mensaje = "No se obtuvo el valor a eliminar";
@@ -212,6 +170,15 @@ public class ServletPaciente extends HttpServlet {
 			msg += "<button class=\"close\" data-dismiss=\"alert\"><span>&times;</span></button>";
 			msg += "<strong>Alerta!!</strong><br/>";
 			msg += mensaje;
+			msg += "</div></div>";
+			request.setAttribute("mensaje", msg);
+		}
+		
+		if (msjcorrecto != null) {
+			String msg = "<div class=\"col-lg-6\">";
+			msg += "<label for=\"success\"></label>";
+			msg += "<div class=\"alert alert-success\" role=\"alert\">";
+			msg += msjcorrecto;
 			msg += "</div></div>";
 			request.setAttribute("mensaje", msg);
 		}

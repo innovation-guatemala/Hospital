@@ -15,6 +15,7 @@ import java.util.List;
 import com.innovation.DAO.Conexion;
 import com.innovation.Interfaz.ServicioPaciente;
 import com.innovation.modelo.Paciente;
+import com.innovation.modelo.Usuario;
 
 public class PacienteDAO implements ServicioPaciente {
 
@@ -24,7 +25,7 @@ public class PacienteDAO implements ServicioPaciente {
 	public List<Paciente> mostra() {
 		
 		List<Paciente> lista = null;
-		String sentencia = "select id_paciente,nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion from paciente";
+		String sentencia = "select id_paciente,nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,no_expediente from paciente";
 		Connection cn = db.Conectar();
 		
 		if (cn != null) {
@@ -54,6 +55,7 @@ public class PacienteDAO implements ServicioPaciente {
 					usuario.setNombre_factura(rs.getString(18));
 					usuario.setDireccion_factura(rs.getString(19));
 					usuario.setUbicacion(rs.getString(20));
+					usuario.setNo_expediente(rs.getString(21));
 					lista.add(usuario);
 				}
 				st.close();
@@ -74,12 +76,10 @@ public class PacienteDAO implements ServicioPaciente {
 	}
 
 	public void Insertar(Paciente paciente) {
-		String sentencia = "Insert into paciente (nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,fecha_creacion) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sentencia = "Insert into paciente (nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion,fecha_creacion,no_expediente) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		Connection cn = db.Conectar();
-		System.out.println("Insert del paciente");
 		if (cn != null) {
 			try {
-				System.out.println("Insert del paciente entro al try");
 				PreparedStatement st = cn.prepareStatement(sentencia);
 				st.setString(1, paciente.getNombres());
 				st.setString(2, paciente.getApellidos());
@@ -100,6 +100,7 @@ public class PacienteDAO implements ServicioPaciente {
 				st.setString(17, paciente.getNombre_factura());
 				st.setString(18, paciente.getDireccion_factura());
 				st.setString(19, paciente.getUbicacion());
+				st.setString(21, paciente.getNo_expediente());
 
 				//calendario para fecha creacion
 				Calendar fecha = new GregorianCalendar();
@@ -144,41 +145,37 @@ public class PacienteDAO implements ServicioPaciente {
 		
 	}
 
-	public Paciente Buscar(int id) {
-		Paciente paciente = null;
-		String sentencia = "select id_paciente,nombres,apellidos,dpi,fecha_nacimiento,sexo,alergias,antecedentes_personales,antecedentes_familiares,anotaciones_importantes,padre,madre,encargado,direccion,dpi_encargado,telefono,nit,nombre_factura,direccion_factura,ubicacion from paciente where id_paciente =  ?";
+	@Override
+	public void Actualizar (Paciente paci){
+		String sentencia = "update paciente set nombres =?, apellidos=?, alergias=?, antecedentes_personales=?, antecedentes_familiares=?, anotaciones_importantes=?, encargado=?, direccion=?, dpi_encargado=?, telefono=?, nit=?, nombre_factura=?, direccion_factura=?, ubicacion=?, no_expediente=? where id_paciente =?;";
 		Connection cn = db.Conectar();
 		if (cn != null ) {
 			try {
 				PreparedStatement st = cn.prepareStatement(sentencia);
-				st.setInt(1, id);
-				ResultSet rs = st.executeQuery();
-				while (rs.next()) {
-					paciente = new Paciente();
-					paciente.setId_paciente(rs.getInt(1));
-					st.setString(1, paciente.getNombres());
-					st.setString(2, paciente.getApellidos());
-					st.setString(3, paciente.getDpi());
-					st.setDate(4, (Date) paciente.getFecha_nacimiento());
-					st.setString(5, paciente.getSexo());
-					st.setString(6, paciente.getAlergias());
-					st.setString(7, paciente.getAntecedentes_personales());
-					st.setString(8, paciente.getAntecedentes_familiares());
-					st.setString(9, paciente.getAnotaciones_importantes());
-					st.setString(10, paciente.getPadre());
-					st.setString(11, paciente.getMadre());
-					st.setString(12, paciente.getEncargado());
-					st.setString(13, paciente.getDireccion());
-					st.setString(14, paciente.getDpi_encargado());
-					st.setString(15, paciente.getTelefono());
-					st.setString(16, paciente.getNit());
-					st.setString(17, paciente.getNombre_factura());
-					st.setString(18, paciente.getDireccion_factura());
-					st.setString(19, paciente.getUbicacion());
+				st.setString(1, paci.getNombres());
+				st.setString(2, paci.getApellidos());
+				st.setString(3, paci.getAlergias());
+				st.setString(4, paci.getAntecedentes_personales());
+				st.setString(5, paci.getAntecedentes_familiares());
+				st.setString(6, paci.getAnotaciones_importantes());
+				st.setString(7, paci.getEncargado());
+				st.setString(8, paci.getDireccion());
+				st.setString(9, paci.getDpi_encargado());
+				st.setString(10, paci.getTelefono());
+				st.setString(11, paci.getNit());
+				st.setString(12, paci.getNombre_factura());
+				st.setString(13, paci.getDireccion_factura());
+				st.setString(14, paci.getUbicacion());
+				st.setString(15, paci.getNo_expediente());
+				st.setInt(16, paci.getId_paciente());
+				
+				int exec = st.executeUpdate();
+				if (exec == 0) {
+					throw new SQLException();
 				}
 				st.close();
 			} catch (SQLException e) {
-				SetMensaje("Problema con Consultar: " + e.getMessage());
+				SetMensaje("Problema con Actualizar: " + e.getMessage());
 			} finally {
 				try {
 					cn.close();
@@ -189,7 +186,7 @@ public class PacienteDAO implements ServicioPaciente {
 		} else {
 			SetMensaje("Error de conexion: " + db.GetMessage());
 		}
-		return paciente;
+		
 	}
 
 
@@ -228,12 +225,5 @@ public class PacienteDAO implements ServicioPaciente {
 	public void SetMensaje (String msj) {
 		this.mensaje = msj;
 	}
-
-	@Override
-	public void Actualizar(Paciente usuario) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
 }

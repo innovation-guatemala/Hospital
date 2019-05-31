@@ -13,6 +13,7 @@ import com.innovation.modelo.Usuario;
 
 public class UsuarioDAO implements ServicioUsuario {
 
+
 	private final Conexion db = new Conexion();
 	private String mensaje;
 	
@@ -34,7 +35,6 @@ public class UsuarioDAO implements ServicioUsuario {
 					usuario.setPuesto(rs.getString(4));
 					usuario.setPassword(rs.getString(5));
 					lista.add(usuario);
-					System.out.println("Al menos consulta : "+ usuario.getId() +" " + usuario.getNombre() +" "+ usuario.getApellido() + " " + usuario.getPuesto() + " " + usuario.getPassword());
 				}
 				st.close();
 			} catch (SQLException e) {
@@ -84,39 +84,6 @@ public class UsuarioDAO implements ServicioUsuario {
 		
 	}
 
-	@Override
-	public Usuario Buscar(int id) {
-		Usuario usuario = null;
-		String sentencia = "select id_acceso, nombre,apellido,puesto from login where id_acceso =  ?";
-		Connection cn = db.Conectar();
-		if (cn != null ) {
-			try {
-				PreparedStatement st = cn.prepareStatement(sentencia);
-				st.setInt(1, id);
-				ResultSet rs = st.executeQuery();
-				while (rs.next()) {
-					usuario = new Usuario();
-					usuario.setId(rs.getInt(1));
-					usuario.setNombre(rs.getString(2));
-					usuario.setApellido(rs.getString(3));
-					usuario.setPuesto(rs.getString(4));
-					usuario.setPassword(rs.getString(5));
-				}
-				st.close();
-			} catch (SQLException e) {
-				SetMensaje("Problema con Consultar: " + e.getMessage());
-			} finally {
-				try {
-					cn.close();
-				}catch (SQLException ex) {
-					 SetMensaje(ex.getMessage());
-				}
-			}
-		} else {
-			SetMensaje("Error de conexion: " + db.GetMessage());
-		}
-		return usuario;
-	}
 
 	@Override
 	public void Actualizar(Usuario usuario) {
@@ -126,11 +93,10 @@ public class UsuarioDAO implements ServicioUsuario {
 			try {
 				PreparedStatement st = cn.prepareStatement(sentencia);
 				st.setString(1, usuario.getNombre());
-				st.setInt(2, usuario.getId());
-				st.setString(3, usuario.getApellido());
-				st.setString(4, usuario.getPuesto());
-				st.setString(5, usuario.getPassword());
-				
+				st.setString(2, usuario.getApellido());
+				st.setString(3, usuario.getPuesto());
+				st.setString(4, usuario.getPassword());
+				st.setInt(5, usuario.getId());
 				
 				int exec = st.executeUpdate();
 				if (exec == 0) {
