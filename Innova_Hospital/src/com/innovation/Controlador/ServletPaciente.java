@@ -145,11 +145,12 @@ public class ServletPaciente extends HttpServlet {
 		
 				
 		case "DEL":
-			int id_el = Integer.parseInt(request.getParameter("id_acceso"));
+			int id_el = Integer.parseInt(request.getParameter("id_paci"));
 			
 			if (id_el != 0) {
 				servicio.Eliminar(id_el);
 				mensaje = servicio.GetMensaje();
+				msjcorrecto = "Paciente Eliminado exitosamente";
 				
 			} else {
 				mensaje = "No se obtuvo el valor a eliminar";
