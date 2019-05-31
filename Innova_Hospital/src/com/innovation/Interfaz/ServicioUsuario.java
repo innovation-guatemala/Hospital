@@ -2,7 +2,7 @@ package com.innovation.Interfaz;
 
 import java.util.List;
 
-import com.innovation.modelo.Usuario;
+import com.innovation.modelo.Usuario;;
 
 
 public interface ServicioUsuario {
