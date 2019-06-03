@@ -79,9 +79,7 @@ public class ServletPaciente extends HttpServlet {
 				String dat=fecha_nacimiento;
 				long date=new SimpleDateFormat("dd/MM/yyyy").parse(dat,new ParsePosition(0)).getTime();
 				java.sql.Date dbDate=new java.sql.Date(date);
-				System.out.println(dbDate);
-				
-				    usuario.setFecha_nacimiento(dbDate);
+			    usuario.setFecha_nacimiento(dbDate);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

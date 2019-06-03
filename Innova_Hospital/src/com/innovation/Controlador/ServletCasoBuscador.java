@@ -39,7 +39,6 @@ public class ServletCasoBuscador extends HttpServlet {
 			List<CasoBuscador> listausuario = servicio.mostra();
 			if (listausuario != null) {
 				request.setAttribute("lista", listausuario);
-				System.out.println(" lista " + listausuario.get(1).getDescripcion());
 			} else {
 				String mensaje = servicio.GetMensaje();
 			}

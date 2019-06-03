@@ -33,7 +33,6 @@ public class CasoBuscadorDAO implements ServicioCasoBuscador {
 					caso.setDocumento(rs.getString(3));
 					caso.setUsuario(rs.getString(4));				
 					lista.add(caso);
-					System.out.println("Al menos consulta caso: "+ caso.getId() +" " + caso.getDescripcion() +" "+ caso.getDocumento() + " " + caso.getUsuario() );
 				}
 				st.close();
 			} catch (SQLException e) {
