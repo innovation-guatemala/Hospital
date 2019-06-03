@@ -14,6 +14,8 @@ import com.innovation.Interfaz.ServicioCasoBuscador;
 import com.innovation.daoModelo.CasoBuscadorDAO;
 import com.innovation.modelo.CasoBuscador;
 
+import com.itextpdf.text.*;
+
 /**
  * Servlet implementation class ServletCaso
  */
