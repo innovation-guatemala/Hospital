@@ -167,7 +167,16 @@
 							aria-expanded="false" aria-controls="fianza"> <i
 								class="mdi mdi-book-open"></i> <span class="nav-text">Fianzas
 									e informes</span> <b class="caret"></b>
-						</a></li>
+						</a>
+						<ul class="collapse" id="fianza" data-parent="#sidebar-menu">
+								<div class="sub-menu">
+									<li><a class="sidenav-item-link"
+										href="../Innova_Hospital/CasoBuscador?accion=QRY"> <span class="nav-text">Buscar
+												Caso</span>
+									</a></li>
+								</div>
+							</ul>
+						</li>
 						<li class="has-sub active expand"><a
 							class="sidenav-item-link" href="javascript:void(0)"
 							data-toggle="collapse" data-target="#rrhh" aria-expanded="false"
